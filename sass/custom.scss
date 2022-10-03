@@ -2,4 +2,8 @@
 $warning : #FFC902;
 $primary : #1476B3;
 
+.hidden{
+    display: none;
+}
+
 @import"../node_modules/bootstrap/scss/bootstrap";

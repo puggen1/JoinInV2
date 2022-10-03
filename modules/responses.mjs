@@ -42,10 +42,10 @@ function changeColor(htmlElement, status = true) {
  * @param {string} type the place of dom that needs to be changed
  * @param {string} colorType color type that is wanted
  * @example ```js
- * changeColor(htmlDIV, "alert", "success")
+ * changeTypeAndColor(htmlDIV, "alert", "success")
  * ```
  */
-function changeColor(htmlElement, type, colorType) {
+function changeTypeAndColor(htmlElement, type, colorType) {
   //removes all color if any and adds new... might need to check class list..
   for (let color of colorList) {
     htmlElement.classList.remove(`${type}-${color}`);
@@ -64,4 +64,4 @@ function displayResponse(htmlElement, message) {
   htmlElement.innerHTML = message;
 }
 
-export { hiddenToggler, changeColor, displayResponse, alertColor };
+export { hiddenToggler, changeColor, displayResponse, changeTypeAndColor };

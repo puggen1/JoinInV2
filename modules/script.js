@@ -5,7 +5,7 @@ import {
   hiddenToggler,
   displayResponse,
   changeColor,
-  alertColor,
+  changeTypeAndColor,
 } from "./responses.mjs";
 let registerForm = document.querySelector("#register");
 registerForm.addEventListener("submit", registerUser);
@@ -34,10 +34,10 @@ async function registerUser(event) {
     });
     console.log(response);
     if (!response.email) {
-      alertColor(registerResponse, "danger");
+      changeTypeAndColor(registerResponse, "danger");
       responseMessage = response.message;
     } else {
-      alertColor(registerResponse, "success");
+      changeTypeAndColor(registerResponse, "success");
       responseMessage = "Account created";
     }
     //do something with response

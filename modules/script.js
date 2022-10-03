@@ -50,7 +50,10 @@ async function registerUser(event) {
     hiddenToggler(registerResponse, false);
   }
 }
-
+/**
+ *
+ * @param {Form Event} event all info needed, given from eventListener
+ */
 async function loginUser(event) {
   event.preventDefault();
   let { inputEmail = event.target[0], inputPassword = event.target[1] } = event;

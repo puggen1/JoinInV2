@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The main page, here you can see friends's newest updates, search or navigate to profile or friends profile">
+        <!--    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">-->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Join In</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header class="row col-12 align-content-center justify-content-center p-0 m-0 align-items-center bg-warning">
+        <nav class="navbar navbar-expand-lg bg-warning ">
+            <div class="container-fluid">
+                <button class="navbar-toggler col-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+              <a class="navbar-brand display-1 fs-1 m-0 text-center col-6 order-lg-2 col-lg-2 col-lg-2" href="#">Join In</a>
+              <div class="order-lg-3 col-auto m-0 col-lg-5 d-flex justify-content-end"> <a class=" navbar-brand display-2 text-center" href="#" data-bs-toggle="collapse" aria-expanded="false" aria-controls="newPostSmall" data-bs-target="#newPostSmall">Post +</a></div>
+             
+              <div class="collapse navbar-collapse order-lg-1 col-lg-5 col-xl-4 justify-content-md-center" id="navbar">
+                <ul class="navbar-nav col-md-6 col-lg-12">
+                  <li class="nav-item col-md-3 col-lg-2 col-xl-auto">
+                    <a class="nav-link text-dark" aria-current="page" href="profile.html">Profile</a>
+                  </li>
+                  <li class="nav-item col-md-auto ms-lg-3 col-lg-2 col-xl-auto">
+                    <a class="nav-link text-dark px-lg-0" aria-current="page" href="index.html">(Log out)</a>
+                  </li>
+                <form class="d-flex d-xl-none" role="search">
+                  <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+    </header>
+   <main class="d-flex justify-content-center align-content-center m-0">
+
+    <section class="row justify-content-center align-content-center col-12 col-md-10 col-lg-8 col-xl-9 m-0 bg-light">
+       
+        <h1 class="display-5 col-10 col-lg-12 text-center mt-3">Welcome username, Here is whats new:</h1>
+        <div class="container row m-0 p-0 col-xl-9 col-xxl-8">
+            <div class="container row col-12 d-lg-none justify-content-end">
+                <button class="btn rounded-circle float-end p-2 m-2 bg-primary col-auto"data-bs-toggle="collapse" aria-expanded="false" aria-controls="newPostSmall" data-bs-target="#newPostSmall" type="button"><i class="bi bi-plus d-flex align-top align-content-center justify-content-center text-light fs-1"></i></button>
+            </div>
+           <div class="container mt-lg-4 col-11 col-xl-10 gy-3">
+            <form action="#" class="collapse mb-4  d-lg-block" id="newPostSmall" >
+                <p class="display-6">Write post here</p>
+                <textarea class="form-control mh-50 h-50 "name="newPost" maxlength="400" id="newPostProfile" placeholder="Write new Update/post here" cols="50" rows="7" ></textarea>
+                <button class="btn btn-primary m-2 ms-0 col-auto" type="button">+ Add Image</button><button class="btn btn-success m-2 col-auto">Post</button> 
+                </form>
+            </div>
+            <div class="container mt-lg-4 col-11 col-xl-10 gy-3">
+            <div class="card">
+                    <div class="card-body">
+                        <p class="m-0 mt-2 px-xl-4" ><b>Ben says:</b> According to all known laws of aviation, a bee should not be able to fly. Its wings are too small to get
+                            its fat little body off the ground.
+                            
+                              
+                            The bee, of course, flies anyway
+                            
+                              
+                            because bees don't care
+                            what humans think is impossible.
+                            
+                              
+                            Yellow, black. Yellow, black.
+                            Yellow, black. Yellow, black.</p>
+                        <div class="d-flex mt-3 justify-content-between px-xl-4">
+                        <button type="button" class="btn btn-outline-dark col-3 m-0 px-0">View </button>
+                        <div class="d-flex justify-content-end">
+                            <p class=" m-2 p-0">12:55</p>
+                            <p class=" m-2 p-0">30 aug</p>
+                       </div>
+                       </div>
+                        
+                    </div>
+            </div>
+           </div>
+           <div class="container col-11 col-xl-10 gy-3 ">
+            <div class="card ">
+                <img src="/assets/trung-thanh-LgdDeuBcgIY-unsplash.jpg" class="img-fluid card-img-top  px-xl-4" alt="sample image of two friends hanging out">
+
+                <div class="card-body px-xl-4">
+                    <p class="m-0 mt-1 "><b>Jess uploaded:</b> Just hanging out with my friend, we are going to watch the bee movie.</p>
+                    <div class="d-flex mt-3 justify-content-between">
+                        <button type="button" class="btn btn-outline-dark col-3 m-0 px-0">View </button>
+                        <div class="d-flex justify-content-end">
+                            <p class="m-2">11:05</p>
+                            <p class="m-2">29 aug</p>
+                        </div>
+                        </div>
+
+                     
+                    </div>
+            </div>
+            </div>
+            <div class="container col-11 col-xl-10 gy-3 ">
+            <div class="card">
+                        <div class="card-body ">
+                            <p class="card-text px-xl-4"><b>mama says:</b> Ooh, black and yellow!
+                                Let's shake it up a little.
+                                
+                                  
+                                Barry! Breakfast is ready!
+                                
+                                  
+                                Ooming!
+                                
+                                  
+                                Hang on a second.
+                                
+                                  
+                                Hello?
+                                
+                                  
+                                - Barry?
+                                - Adam?- Oan you believe this is happening?
+                                - I can't. I'll pick you up.
+                                
+                                  
+                                Looking sharp.
+                                
+                                  
+                                Use the stairs. Your father
+                                paid good money for those.
+                                
+                                  
+                                Sorry. I'm excited.
+                                
+                                  
+                                Here's the graduate.
+                                We're very proud of you, son.
+                                
+                                  
+                                A perfect report card, all B's.
+                                
+                                  
+                                Very proud.
+                                
+                                  
+                                Ma! I got a thing going here.
+                                
+                               </p>
+                            <div class="d-flex mt-3 justify-content-between px-xl-4">
+                            <button type="button" class="btn btn-outline-dark col-3 m-0 px-0">View </button>
+                            <div class="d-flex justify-content-end">
+                                <p class="m-2">09:05</p>
+                                <p class="m-2">25 aug</p>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        
+        
+        </div>
+        <div class="container col-11 col-xl-10 gy-3">
+            <div class="card">
+                        <div class="card-body">
+                            <p class="card-text px-xl-4"><b class="me-1">Barry says:</b>How should I start it?
+                                "You like jazz?" No, that's no good.
+                                
+                                  
+                                Here she comes! Speak, you fool!
+                                
+                                  
+                                Hi!
+                                
+                                  
+                                I'm sorry.
+                                
+                                  
+                                - You're talking.
+                                - Yes, I know.
+                                
+                                  
+                                You're talking!
+                                
+                                  
+                                I'm so sorry.
+                                
+                                  
+                                No, it's OK. It's fine.
+                                I know I'm dreaming.
+                                
+                                  
+                                But I don't recall going to bed.
+                                
+                                  
+                                Well, I'm sure this
+                                is very disconcerting.
+                                
+                                  
+                                This is a bit of a surprise to me.
+                                I mean, you're a bee!
+                               </p>
+                            <div class="d-flex mt-3 justify-content-between px-xl-4">
+                            <button type="button" class="btn btn-outline-dark col-3 m-0 px-0">View </button>
+                            <div class="d-flex justify-content-end">
+                                <p class="m-2">09:05</p>
+                                <p class="m-2">25 aug</p>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        
+        
+        </div>
+        <h3 class="text-center mt-5 fs-6">No more to show (end of feed)</h3>    
+    </section>
+    <section class="container d-none  d-xl-flex flex-column align-items-start align-items-xl-center">
+        <div class="container d-flex">
+        <input type="search" class="form-control my-4 me-1 pe-xl-1" placeholder="Search for anything">
+        <button class="btn btn-primary my-4">Search</button>
+    </div >
+        <h2 class="border-bottom border-dark my-4 text-center">Contacts</h2>
+        <div class="d-flex flex-column col-12 col-xl-8 align-items-xl-center">
+            <div class="row my-2 align-items-md-end justify-content-xl-center">
+                <img class="rounded-circle col-xl-2 px-0" src="https://picsum.photos/150/150" alt="random filler image for profile picture">
+                <h4 class="fs-6 text-decoration-underline text-center col-xl-6 col-xxl-5 p-0 mb-md-0">contact one</h4>
+            </div>
+            <div class=" row my-2 align-items-md-end justify-content-xl-center">
+                <img class="rounded-circle col-xl-2 px-0" src="https://picsum.photos/150/150" alt="random filler image for profile picture">
+                <h4 class="fs-6 text-decoration-underline text-center col-xl-6 col-xxl-5 p-0 mb-md-0">contact two</h4>
+            </div>
+            <div class="row my-2 align-items-md-end justify-content-xl-center">
+                <img class="rounded-circle col-xl-2 px-0 " src="https://picsum.photos/150/150" alt="random filler image for profile picture">
+                <h4 class="fs-6 text-decoration-underline text-center col-xl-6 col-xxl-5 p-0 mb-md-0">contact three</h4>
+            </div>
+        </div>
+        
+    </section>  
+   </main>
+   <footer class="m-0 mt-auto bg-warning row justify-content-center">
+    <div class="row col-12 col-lg-8  p-2 m-0 justify-content-around align-items-center pt-4">
+        <div class="col-4 row">
+            <a class=" text-center col-12 link-dark p-0" href="/profile.html">My profile</a>
+        </div>
+        <div class="col-auto row align-items-center justify-content-center">
+            <a href="#" class="btn text-center rounded-circle p-2 bg-primary"> <i class="bi bi-arrow-up d-flex align-top align-content-center justify-content-center text-light"></i></a>
+        </div>
+        <div class="col-4 row">
+            <a href="/settings.html" class=" col-12 text-center link-dark p-0">Settings</a>
+        </div>
+        <div class="col-12 justify-content-center row">
+            <a href="/terms.html" class=" text-center  col-6 mt-3 link-dark p-0">Terms of service</a>
+        </div>
+    </div>
+   </footer>
+
+   <!--
+     <script src="/node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>-->
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

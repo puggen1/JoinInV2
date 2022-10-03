@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is you profile page, here you can see info about you, updates/posts and your contacts">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">-->
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>My profile</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!--   <a class="col-4 " href="feed.html">Join In</a> 
+            <p class="col-4 text-center  m-0">new post</p>-->
+            <header class="row col-12 align-content-center justify-content-center p-0 m-0 align-items-center bg-warning">
+                <nav class="navbar navbar-expand-lg bg-warning ">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler col-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+                      <a class="navbar-brand display-1 fs-1 m-0 text-center col-6 order-lg-2 col-lg-2" href="feed.html">Join In</a>
+                      <div class="order-lg-3 col-auto m-0 col-lg-5 d-flex justify-content-end">
+                        <a class=" navbar-brand display-2 text-center" href="#" data-bs-toggle="collapse" aria-expanded="false" aria-controls="newPostLarge" data-bs-target="#newPostLarge">Post +</a>
+                      </div>
+                      <div class="collapse navbar-collapse order-lg-1 col-lg-5 justify-content-md-center justify-content-lg-start" id="navbar">
+                        <ul class="navbar-nav col-md-6">
+                          <li class="nav-item col-md-3">
+                            <a class="nav-link text-dark active" aria-current="page" href="#">Profile</a>
+                          </li>
+                          <li class="nav-item col-md-auto ms-lg-3">
+                            <a class="nav-link text-dark" aria-current="page" href="index.html">(Log out)</a>
+                          </li>
+                       
+                      </div>
+                    </div>
+                  </nav>
+            </header>
+
+
+    <main class="row m-0 p-0 mt-xl-4 justify-content-xxl-center">
+        <section class="container  row col-xxl-10 m-0 p-0 justify-content-center">
+            <div class="row order-1 col-xl-3 justify-content-center">
+                <h1 class="text-center">Ben Doe</h1>
+                <img class=" rounded-circle col-6 col-sm-4 col-md-3 col-xl-12 p-xl-4"src="https://picsum.photos/400/400" data-bs-toggle="modal" data-bs-target="#profilePicture" alt="the users's profile picture, an sample image">
+            </div>
+         
+            <form action="#" id="newPostLarge" class="collapse d-xl-flex order-3 order-md-4 order-xl-2 d-xl-flex col-12 col-sm-10 col-md-7 col-lg-7 col-xl-6 p-4 m-2 mt-0 pt-0 mb-4 pb-0 row align-items-xl-center">
+                <p class="display-6">Write post here</p>
+                <textarea class="form-control mh-50 h-50 "name="newPost" maxlength="400" id="newPostProfile" placeholder="Write new Update/post here" cols="50" rows="7" ></textarea>
+                <button class="btn btn-primary m-2 ms-0 col-auto" type="button">+ Add Image</button><button class="btn btn-success m-2 col-auto">Post</button>
+            </form>
+            <div class="order-2 order-xl-1 col-12 col-sm-10 col-md-5 col-lg-4 col-xl-3 mt-4 mb-md-4 order-xl-4 px-xl-4">
+                <h2>About Ben:</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, tenetur perferendis soluta iusto maxime modi nemo praesentium odio nam distinctio et nihil quam vero odit suscipit, vel similique quae corrupti.</p>
+            </div>
+            <div class="col-12 col-sm-10 order-4 order-md-4 order-xl-5 col-lg-7 col-xl-6 mt-lg-4  mb-md-4 mt-md-4">
+                <div class="row align-items-center mb-3">
+                    <h2 class=" col-6 col-xl-12 text-xl-center my-0">My updates</h2>
+                    <div class="container col-6 row align-items-center justify-content-end  d-xl-none">
+                        <label class=" fs-4 ms-3 me-0 col-auto" for="newUpdate">New</label>
+                    <button id="newUpdate"type="button" class="col-auto btn btn-primary p-2 rounded-circle" data-bs-toggle="collapse" aria-expanded="false" aria-controls="newPostLarge" data-bs-target="#newPostLarge">
+                        <i class="bi bi-plus  d-flex align-top align-content-center justify-content-center fs-2"></i>
+                        </button>
+                      
+                    </div>
+                   
+                </div>
+                <div class="accordion" id="updates">
+                    
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="postOne">
+                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#postOneContent" aria-expanded="true" aria-controls="postOneContent">My last post</button>
+                        </h3>
+                        <div id="postOneContent" class="accordion-collapse collapse show" aria-labelledby="postOne" data-bs-parent="#updates">
+                            <div class="accordion-body">
+                              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium temporibus nesciunt aperiam, ut nobis odio dolorum rem, tempora amet repellat cumque ducimus omnis odit necessitatibus delectus voluptatem alias, sit laudantium.</p>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="postTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#postTwoContent" aria-expanded="false" aria-controls="postTwoContent">is the world flat? </button>
+                        </h3>
+                        <div id="postTwoContent" class="accordion-collapse collapse" aria-labelledby="postTwo" data-bs-parent="#updates">
+                            <div class="accordion-body">
+                              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit soluta, ipsum natus reiciendis perferendis amet dignissimos illum eius delectus. Quae dolor veniam amet atque voluptatum repudiandae rerum, corrupti facere deleniti.</p>
+                            </div>
+                          </div>
+                        
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="postThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#postThreeContent" aria-expanded="false" aria-controls="postThreeContent">Illuminati?
+                            </button>
+                        </h3>
+                        <div id="postThreeContent" class="accordion-collapse collapse " aria-labelledby="postThree" data-bs-parent="#updates">
+                            <div class="accordion-body">
+                              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat architecto iure quae laudantium non error dolore totam illo quasi magni? Perspiciatis, quasi perferendis impedit sint minima labore illo. Enim, iste?</p>
+                            </div>
+                          </div>
+                        
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="postFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#postFourContent" aria-expanded="false" aria-controls="postOneContent">my first post!</button>
+                        </h3>
+                        <div id="postFourContent" class="accordion-collapse collapse " aria-labelledby="postFour" data-bs-parent="#updates">
+                            <div class="accordion-body">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam laboriosam cumque iusto in rerum nemo excepturi iste reprehenderit? Fugit laboriosam tempore saepe omnis quam modi voluptatibus reiciendis magni natus eveniet!</p>
+                            </div>
+                          </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-10 p-0 mt-lg-4 m-0 order-5 order-md-3 order-xl-3 col-md-5 col-lg-4 col-xl-3 row justify-content-around mt-xl-0 mb-md-4">
+               <h2 class="text-center mb-3 mb-md-0"> My contacts</h2>
+
+            <div class="col-4 col-md-8 col-xl-10 col-xxl-12 row my-1 align-items-md-end justify-content-xl-center">
+                <img class="rounded-circle col-12 col-md-3 col-xxl-2 px-0" src="https://picsum.photos/150/150" alt="random filler image for profile picture">
+                <h3 class="fs-6 text-decoration-underline text-center col-md-8 col-xl-6 col-xxl-5 p-0 mb-md-0">contact one</h4>
+            </div>
+            <div class="col-4 col-md-8 col-xl-10 col-xxl-12 row my-1 align-items-md-end justify-content-xl-center">
+                <img class="rounded-circle col-12 col-md-3 col-xxl-2 px-0" src="https://picsum.photos/150/150" alt="random filler image for profile picture">
+                <h3 class="fs-6 text-decoration-underline text-center col-md-8 col-xl-6 col-xxl-5 p-0 mb-md-0">contact two</h4>
+            </div>
+            <div class="col-4 col-md-8 col-xl-10 col-xxl-12  row my-1 align-items-md-end justify-content-xl-center">
+                <img class="rounded-circle col-12 col-md-3 col-xxl-2 px-0 " src="https://picsum.photos/150/150" alt="random filler image for profile picture">
+                <h3 class="fs-6 text-decoration-underline text-center col-md-8 col-xl-6 col-xxl-5 p-0 mb-md-0">contact three</h4>
+            </div>
+            </div>
+            <div class="p-0 m-0 d-none d-xl-block order-xl-last col-xl-3">
+            </div>
+        </section>
+        <div class="modal fade" id="profilePicture" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class=" modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                  <button type="button" class="btn-close ms-4 mt-4 py-2" data-bs-dismiss="modal"></button>
+                  <img class="rounded p-4"src="https://picsum.photos/400/400" alt="the users's profile picture, an sample image">
+                  <p class=" text-center">Username's profile picture</p>
+                  
+            </div>
+          </div>
+          </div>
+    </main>
+    <footer class="m-0 mt-auto bg-warning row justify-content-center">
+        <div class="row col-12 col-lg-8  p-2 m-0 justify-content-around align-items-center pt-4">
+            <div class="col-4 row">
+                <a class=" text-center col-12 link-dark p-0" href="/profile.html">My profile</a>
+            </div>
+            <div class="col-auto row align-items-center justify-content-center">
+                <a href="#" class="btn text-center rounded-circle p-2 bg-primary"> <i class="bi bi-arrow-up d-flex align-top align-content-center justify-content-center text-light"></i></a>
+            </div>
+            <div class="col-4 row">
+                <a href="/settings.html" class=" col-12 text-center link-dark p-0">Settings</a>
+            </div>
+            <div class="col-12 justify-content-center row">
+                <a href="/terms.html" class=" text-center  col-6 mt-3 link-dark p-0">Terms of service</a>
+            </div>
+        </div>
+       </footer>
+       <!--
+     <script src="/node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   -->
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+</html>

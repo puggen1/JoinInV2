@@ -26,7 +26,7 @@
             <input class="form-control" type="password" placeholder="password" required>
             <button type="submit" class="btn btn-success rounded-2 col-3 mt-2 px-0">Login</button>
             <button type="button" class="btn btn-link col-8 col-sm-5 col-md-5 col-lg-8 mx-lg-0 p-0 mt-2">Forgot Password?</button>
-            <div class="mt-3 col-12 alert alert-danger hidden" role="alert">
+            <div class="mt-3 p-1 col-12 alert alert-danger hidden" id="loginResponse"role="alert">
               </div>
               
         </form>
@@ -34,11 +34,13 @@
             <h2 class="p-0">Dont have a user?</h2>
             <div class="d-flex  mt-3 justify-content-between align-items-center"><label for="regName" class="ps-0">name</label><p class="me-3 mb-0 pb-0 text-danger hidden"id="regNameResponse">letter, number and . only</p></div>
             <input class="col-7 form-control" type="text" id="regName" placeholder="name" required>
-            <div class="d-flex  mt-3 justify-content-between align-items-center"></div><label for="regEmail"class="ps-0">email</label><p class="me-3 mb-0 pb-0 text-danger hidden"id="regEmailResponse"></p></div>
+            <div class="d-flex  mt-3 justify-content-between align-items-center"><label for="regEmail"class="ps-0">email</label><p class="me-3 mb-0 pb-0 text-danger hidden"id="regEmailResponse">must be noroff email</p></div>
             <input class="form-control" id="regEmail" type="email" placeholder="something@this.com" required>
-            <div class="d-flex  mt-3 justify-content-between align-items-center"></div><label for="regPassword" class="ps-0">password</label><p class="me-3 mb-0 pb-0 text-danger hidden"id="regPasswordResponse"></p></div>
+            <div class="d-flex  mt-3 justify-content-between align-items-center"><label for="regPassword" class="ps-0">password</label><p class="me-3 mb-0 pb-0 text-danger hidden"id="regPasswordResponse"> must be more than 8</p></div>
             <input class="form-control" type="password" id="regPassword" placeholder="password" required>
             <button type="submit" class="mt-2 btn btn-primary col-6">Register</button>
+            <div class="mt-3 p-1 col-12 alert alert-danger hidden" id="registerResponse"role="alert">
+            </div>
         </form>
     </main>
 

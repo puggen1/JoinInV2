@@ -31,7 +31,7 @@ export default async function registerUser(event) {
       changeTypeAndColor(registerResponse, "danger");
       responseMessage = response.message;
     } else {
-      changeTypeAndColor(registerResponse, "success");
+      changeTypeAndColor(registerResponse,"alert", "success");
       responseMessage = "Account created";
     }
     //do something with response

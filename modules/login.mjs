@@ -3,8 +3,12 @@ import { hiddenToggler, displayResponse } from "./responses.mjs";
 import globalApiCall from "./globalApiCall.mjs";
 
 /**
- *
- * @param {Form Event} event all info needed, given from eventListener
+ * @description logins a user or gives response that some credentials is not correct.
+ * @param {Form Event} event all info needed, given from eventListener(user, email and password as input values)
+ * @example ```js
+ * loginUser(loginForm);
+ * //expected result: user is logged in, or response is shown under form
+ * ```
  */
 export default async function loginUser(event) {
   event.preventDefault();

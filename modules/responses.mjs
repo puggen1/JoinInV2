@@ -27,6 +27,11 @@ let colorList = [
   "light",
   "dark",
 ];
+/**
+ *
+ * @param {htmlDOM} htmlElement the element you want to change your border of
+ * @param {boolean} status determines if it should be green or red border
+ */
 function changeColor(htmlElement, status = true) {
   if (!status) {
     htmlElement.classList.add("border-danger");

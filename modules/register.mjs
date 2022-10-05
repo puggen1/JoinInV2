@@ -5,7 +5,15 @@ import {
   displayResponse,
   changeTypeAndColor,
 } from "./responses.mjs";
-
+/**
+ * @description this function registers a user, and gives response on the html
+ * @param {htmlDOM} event html form with 3 input for user, email and password
+ * @example```js
+ * registerUser(form)
+ *
+ * //expected result: user is created or error, also a alert box is shown with status
+ * ```
+ */
 export default async function registerUser(event) {
   event.preventDefault();
   //for success or error message
@@ -28,10 +36,10 @@ export default async function registerUser(event) {
     });
     console.log(response);
     if (!response.email) {
-      changeTypeAndColor(registerResponse,"alert", "danger");
+      changeTypeAndColor(registerResponse, "alert", "danger");
       responseMessage = response.message;
     } else {
-      changeTypeAndColor(registerResponse,"alert", "success");
+      changeTypeAndColor(registerResponse, "alert", "success");
       responseMessage = "Account created";
     }
     //do something with response

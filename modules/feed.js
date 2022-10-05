@@ -2,11 +2,12 @@ import Post from "./Post.mjs";
 import globalApiCall from "./globalApiCall.mjs";
 let allPosts = "social/posts?_author=true&_comments=true&_reactions=true";
 let authToken = localStorage.getItem("token");
-let userName = localStorage.getItem("name");
+let userName = localStorage.getItem("username");
 let isLoggedInStatus = localStorage.getItem("isLoggedIn");
 let logOutBtn = document.querySelector("#logOut");
 let profileLink = document.querySelector("#username");
 let postDiv = document.querySelector("#posts");
+let welcome = document.querySelector("#welcomeMessage");
 
 //double validation for is logged in so token must be used as well
 function isLoggedIn() {
@@ -28,6 +29,7 @@ function feedInitiator() {
   if (status) {
     profileLink.innerHTML = userName;
     logOutBtn.addEventListener("click", logOut);
+    welcome.innerHTML = `Welcome <b>${userName}</b> here is whats new`
     testPost();
   } else {
     logOutBtn.innerHTML = "Log in";

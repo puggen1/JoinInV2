@@ -6,12 +6,15 @@ export default class Post {
     console.log(this.postData);
   }
   htmlPost() {
+    let picture = Post.postPicture(this.postData);
+    let profile = Post.postProfile(this.postData);
     let { title, body, author, created /*updated*/ } = this.postData;
     let html = `<div class="container col-11 col-xl-10 gy-3">
     <div class="card">
                 <div class="card-body">
-                <b class="me-1">${author.name} Says: </b>
+                ${profile}
                 <h3>${title}</h3>
+                  ${picture}
                     <p class="card-text px-xl-4">
                     ${body}
                        </p>
@@ -26,5 +29,21 @@ export default class Post {
 </div>
 </div>`;
     return html;
+  }
+  static postPicture(post){
+    let img = "";
+    
+    if(post.media){
+      img = `<img src="${post.media} alt="test alt">"`;
+    }
+    return img;
+  }
+  static postProfile(post){
+    let avatar = "";
+    if(post.author.avatar){
+      avatar = `<img src="${post.author.avatar}" class="border-rounded" alt="user test alt">`;
+    }
+    let userDiv = `<div>${avatar} <p><b class="me-1">${post.author.name}</b>Says:</p></div>`;
+    return userDiv
   }
 }

@@ -23,6 +23,7 @@ export default async function loginUser(event) {
     displayResponse(loginResponse, "");
     localStorage.setItem("token", response.accessToken);
     localStorage.setItem("username", response.name);
+    localStorage.setItem("isLoggedIn", true);
     window.location.href = "./feed.html";
   } else {
     let loginResponse = document.querySelector("#loginResponse");

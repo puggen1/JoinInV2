@@ -13,11 +13,11 @@ export default async function loginUser(event) {
     email: inputEmail.value,
     password: inputPassword.value,
   });
-  if (response.authorizationToken || !response.message) {
+  if (response.accessToken || !response.message) {
     console.log(response);
     hiddenToggler(loginResponse);
     displayResponse(loginResponse, "");
-    localStorage.setItem("token", response.authorizationToken);
+    localStorage.setItem("token", response.accessToken);
     localStorage.setItem("username", response.name);
     window.location.href = "./feed.html";
   } else {
@@ -25,5 +25,5 @@ export default async function loginUser(event) {
     hiddenToggler(loginResponse, false);
     displayResponse(loginResponse, `<p class="m-auto">${response.message}</p>`);
   }
-  //if response is ok /  token is retrieved, store token and name, redirect to profile or feed
+  //if response is ok redirect to profile or feed
 }

@@ -28,10 +28,10 @@ export default async function registerUser(event) {
     });
     console.log(response);
     if (!response.email) {
-      changeTypeAndColor(registerResponse, "danger");
+      changeTypeAndColor(registerResponse,"alert", "danger");
       responseMessage = response.message;
     } else {
-      changeTypeAndColor(registerResponse, "success");
+      changeTypeAndColor(registerResponse,"alert", "success");
       responseMessage = "Account created";
     }
     //do something with response

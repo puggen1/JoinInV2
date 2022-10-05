@@ -1,9 +1,17 @@
-# things i have to do before merge:
+# things i need to do
 
-## catched error
+## make static functions for creating html for post
 
-figure out why error is shown when im catching it...?
+with exception for missing image and so on
 
-## login after register
+## add image to post if there is any
 
-if fitting, make the user automatically login after creating account...
+## fix the div where posts are inside.
+
+## create post
+
+## check if post is mine
+
+## filter and sort
+
+## search

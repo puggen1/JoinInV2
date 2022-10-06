@@ -9,6 +9,9 @@ let profileLink = document.querySelector("#username");
 let postDiv = document.querySelector("#posts");
 let welcome = document.querySelector("#welcomeMessage");
 
+//both create post areas here
+let bigScreenPost = document.querySelector("#newPostSmall");
+bigScreenPost.addEventListener("submit", Post.createPost);
 //double validation for is logged in so token must be used as well
 function isLoggedIn() {
   if (authToken && isLoggedInStatus) {
@@ -38,7 +41,7 @@ function feedInitiator() {
   }
 }
 feedInitiator();
-
+// better name here
 async function testPost() {
   let response = await globalApiCall(allPosts, authToken, "GET");
   let postArr = [];

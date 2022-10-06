@@ -112,4 +112,20 @@ export default class Post {
       postActions[1].addEventListener("click", this.deletePost);
     }
   }
+  /**
+   * @description creates a post with the given data
+   * @param {htmlDom} event an html object with form data
+   */
+  static async createPost(event) {
+    event.preventDefault();
+    let token = localStorage.getItem("token");
+    let { title = event.target[0].value, body = event.target[1].value } = event;
+    if (title && body) {
+      let response = await globalApiCall("social/posts", token, "POST", {
+        title,
+        body,
+      });
+      console.log(response);
+    }
+  }
 }

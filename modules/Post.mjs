@@ -1,3 +1,5 @@
+import globalApiCall from "./globalApiCall.mjs";
+
 export default class Post {
   constructor(postData) {
     this.postData = postData;
@@ -16,11 +18,11 @@ export default class Post {
     let buttons = `<a type="button" href="./post?id=${this.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>`;
     //i dont know how to do this yet
     //this.postData.author.name === localUsername
-    if (this.postData.id === 1509) {
+    if (this.postData.author.name === localUsername) {
       buttons += `<div class="dropdown">
       <button class="btn dropdown-toggle btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">options</button>
       <ul class="dropdown-menu">
-          <li><button type="button" data-id="${this.postData.id}" class="btn postAction dropdown-item">update</button></li>
+          <li><button type="button" data-bs-target="#updatePost${this.postData.id}" data-id="${this.postData.id}" class="btn postAction dropdown-item">update</button></li>
           <li><button type="button" data-id="${this.postData.id}" class="btn postAction dropdown-item">delete</button></li>
       </ul>
   </div>`;
@@ -89,12 +91,25 @@ export default class Post {
     return userDiv;
   }
   //can be changed to non static if i send id with it
-  static updatePost(event) {
-    let targedPostId = event.target.getAttribute("data-id")
-    console.log(targedPostId)
+  updatePost() {
+    //this works but is not what i expected
+    let id = this.getAttribute("data-id");
   }
-  static deletePost(event){
-    let targedPostId = event.target.getAttribute("data-id")
-    console.log(targedPostId)
+  async deletePost() {
+    let id = this.getAttribute("data-id");
+    let token = localStorage.getItem("token");
+    if (confirm("Delete this post?")) {
+      let response = await globalApiCall(`social/posts/${id}`, token, "DELETE");
+      console.log(response);
+    } else {
+      console.log("cancelled");
+    }
+  }
+  addEvent(singlePost) {
+    let postActions = singlePost.querySelectorAll(".postAction");
+    if (postActions.length > 0) {
+      postActions[0].addEventListener("click", this.updatePost);
+      postActions[1].addEventListener("click", this.deletePost);
+    }
   }
 }

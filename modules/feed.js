@@ -45,7 +45,6 @@ async function testPost() {
   for (let post of response) {
     postArr.push(new Post(post));
   }
-  let html = "";
   for (let post of postArr) {
     post.logPost();
     let singlePost = document.createElement("div");
@@ -53,11 +52,7 @@ async function testPost() {
     singlePost.innerHTML = post.htmlPost();
     postDiv.insertAdjacentElement("beforeend", singlePost);
     //this will be targeted remember not run every time
-    let postActions = singlePost.querySelectorAll(".postAction");
-    if(postActions.length > 0) {
-      postActions[0].addEventListener("click", Post.updatePost);
-      postActions[1].addEventListener("click", Post.deletePost)
-    }
+    post.addEvent(singlePost);
   }
   //postDiv.innerHTML = html;
 }

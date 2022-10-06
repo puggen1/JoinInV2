@@ -14,26 +14,23 @@ export default class Post {
    */
   customButtons(localUsername) {
     let buttons = `<a type="button" href="./post?id=${this.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>`;
-    //quick test this.postData.author.name === localUsername
-    if (this.postData.id === 1458) {
-      let updateBtn = document.createElement("button");
-      updateBtn.setAttribute("data-id", this.postData.id);
-      updateBtn.addEventListener("click", this.updatePost);
-
-      let deleteBtn = document.createElement("button");
-      deleteBtn.setAttribute("data-id", this.postData.id);
-      deleteBtn.addEventListener("click", this.deletePost);
+    //i dont know how to do this yet
+    //this.postData.author.name === localUsername
+    if (this.postData.id === 1470) {
       buttons += `<div class="dropdown">
-      <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">options</button>
+      <button class="btn dropdown-toggle btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">options</button>
       <ul class="dropdown-menu">
-          <li><button  data-id="${this.postData.id}" class="dropdown-item">update</button></li>
-          <li><button data-id="${this.postData.id}" class="dropdown-item">delete</button></li>
-          ${updateBtn};
+          <li><button type="button" data-id="${this.postData.id}" class="btn postAction dropdown-item">update</button></li>
+          <li><button type="button" data-id="${this.postData.id}" class="btn postAction dropdown-item">delete</button></li>
       </ul>
   </div>`;
-      console.log(updateBtn);
     }
+    //
+    //
     return buttons;
+  }
+  static test() {
+    console.log("test");
   }
   /**
    * @description runst trough a post class instance, puts the needed values inside html
@@ -45,7 +42,8 @@ export default class Post {
     let picture = Post.postPicture(this.postData);
     let profile = Post.postProfile(this.postData);
     let { title, body, author, created /*updated*/ } = this.postData;
-    let html = `<div class="container col-11 col-xl-10 gy-3">
+    //<div class="container col-11 col-xl-10 gy-3"></div>
+    let html = `
     <div class="card px-xl-4">
                 <div class="card-body">
                 ${profile}
@@ -63,7 +61,7 @@ export default class Post {
                 </div>
             </div>
 </div>
-</div>`;
+`;
     return html;
   }
   /**
@@ -93,10 +91,7 @@ export default class Post {
     let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <p class="mb-0"><b class="me-1">${post.author.name}</b>Says:</p></div>`;
     return userDiv;
   }
-  updatePost() {
-    console.log("late updated");
-  }
-  deletePost() {
-    console.log("late deleted");
+  static updatePost() {
+    console.log("updated");
   }
 }

@@ -29,7 +29,7 @@ function feedInitiator() {
   if (status) {
     profileLink.innerHTML = userName;
     logOutBtn.addEventListener("click", logOut);
-    welcome.innerHTML = `Welcome <b>${userName}</b> here is whats new`
+    welcome.innerHTML = `Welcome <b>${userName}</b> here is whats new`;
     testPost();
   } else {
     logOutBtn.innerHTML = "Log in";
@@ -48,7 +48,16 @@ async function testPost() {
   let html = "";
   for (let post of postArr) {
     post.logPost();
-    html += post.htmlPost();
+    let singlePost = document.createElement("div");
+    singlePost.classList.add("container", "col-11", "col-xl-10", "gy-3");
+    singlePost.innerHTML = post.htmlPost();
+    postDiv.insertAdjacentElement("beforeend", singlePost);
+    console.log(singlePost);
+    //this will be targeted remember not run every time
+    let postActions = singlePost.querySelectorAll(".postAction");
+    if (postActions) {
+      console.log(postActions);
+    }
   }
-  postDiv.innerHTML = html;
+  //postDiv.innerHTML = html;
 }

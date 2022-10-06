@@ -16,7 +16,7 @@ export default class Post {
     let buttons = `<a type="button" href="./post?id=${this.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>`;
     //i dont know how to do this yet
     //this.postData.author.name === localUsername
-    if (this.postData.id === 1470) {
+    if (this.postData.id === 1509) {
       buttons += `<div class="dropdown">
       <button class="btn dropdown-toggle btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">options</button>
       <ul class="dropdown-menu">
@@ -28,9 +28,6 @@ export default class Post {
     //
     //
     return buttons;
-  }
-  static test() {
-    console.log("test");
   }
   /**
    * @description runst trough a post class instance, puts the needed values inside html
@@ -91,7 +88,13 @@ export default class Post {
     let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <p class="mb-0"><b class="me-1">${post.author.name}</b>Says:</p></div>`;
     return userDiv;
   }
-  static updatePost() {
-    console.log("updated");
+  //can be changed to non static if i send id with it
+  static updatePost(event) {
+    let targedPostId = event.target.getAttribute("data-id")
+    console.log(targedPostId)
+  }
+  static deletePost(event){
+    let targedPostId = event.target.getAttribute("data-id")
+    console.log(targedPostId)
   }
 }

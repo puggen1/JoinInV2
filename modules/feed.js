@@ -52,11 +52,11 @@ async function testPost() {
     singlePost.classList.add("container", "col-11", "col-xl-10", "gy-3");
     singlePost.innerHTML = post.htmlPost();
     postDiv.insertAdjacentElement("beforeend", singlePost);
-    console.log(singlePost);
     //this will be targeted remember not run every time
     let postActions = singlePost.querySelectorAll(".postAction");
-    if (postActions) {
-      console.log(postActions);
+    if(postActions.length > 0) {
+      postActions[0].addEventListener("click", Post.updatePost);
+      postActions[1].addEventListener("click", Post.deletePost)
     }
   }
   //postDiv.innerHTML = html;

@@ -4,4 +4,4 @@ This is the course assignment for JS2. the Task is to implement javascript to ex
 
 ## current branch netlify:
 
-## https://joininv2-loginandregister.netlify.app
+## joininv2-feedbuild.netlify.app

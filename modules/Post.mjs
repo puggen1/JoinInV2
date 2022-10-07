@@ -82,6 +82,7 @@ export default class Post {
    * @returns
    */
   static postProfile(post) {
+    //make universal for friends function (move to another file and function )
     let img = "../assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg";
     if (post.author.avatar) {
       img = post.author.avatar;
@@ -116,15 +117,24 @@ export default class Post {
    * @description creates a post with the given data
    * @param {htmlDom} event an html object with form data
    */
-  static async createPost(event) {
+  static async createPost(event, imageLink) {
     event.preventDefault();
+
     let token = localStorage.getItem("token");
     let { title = event.target[0].value, body = event.target[1].value } = event;
+
     if (title && body) {
-      let response = await globalApiCall("social/posts", token, "POST", {
-        title,
-        body,
-      });
+      let apiBody = { title, body };
+      if (imageLink.value) {
+        apiBody.media = imageLink.value;
+      }
+
+      let response = await globalApiCall(
+        "social/posts",
+        token,
+        "POST",
+        apiBody
+      );
       console.log(response);
     }
   }

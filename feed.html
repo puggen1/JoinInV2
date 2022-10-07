@@ -49,9 +49,9 @@
            <div class="container mt-lg-4 col-11 col-xl-10 gy-3">
             <form  class="collapse mb-4  d-lg-block" id="newPostSmall" >
                 <p class="display-6">Write post here</p>
-                <input type="text" id="newPostTitle" class="form-control" placeholder="title">
+                <input type="text" id="newPostTitle" class="form-control mb-1" placeholder="title">
                 <textarea class="form-control mh-50 h-50 "name="newPost" maxlength="400" id="newPostProfile" placeholder="Write new Update/post here" cols="50" rows="7" ></textarea>
-                <button class="btn btn-primary m-2 ms-0 col-auto" type="button">+ Add Image</button><button class="btn btn-success m-2 col-auto">Post</button> 
+                <button class="btn btn-primary m-2 ms-0 col-auto" data-bs-toggle="modal" data-bs-target="#addPictureModal" type="button">+ Add Image</button><button class="btn btn-success m-2 col-auto">Post</button> 
                 </form>
             </div>
            <div id="posts">
@@ -81,6 +81,25 @@
         </div>
         
     </section>  
+
+    <div class="modal fade" id="addPictureModal" tabindex="-1" aria-labelledby="addPictureModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addPictureModalLabel">Add image link here:</h1>
+              
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="imgLink" class="form-control" placeholder="link here....">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+              <button type="button" class="btn btn-primary">add link</button>
+            </div>
+          </div>
+        </div>
+      </div>
    </main>
    <footer class="m-0 mt-auto bg-warning row justify-content-center">
     <div class="row col-12 col-lg-8  p-2 m-0 justify-content-around align-items-center pt-4">

@@ -1,16 +1,20 @@
-# things i need to do
+# things i need to do on feed
 
-## make static functions for creating html for post
+## update feature
 
-with exception for missing image and so on
+## either change or fix add link modal
 
-## add image to post if there is any
+## post time need to be right
+
+## small visual fixes
+
+## friends if any should be shown, change function
+
+## profile picture on top left, (profile link)
 
 ## fix the div where posts are inside.
 
 ## create post
-
-## check if post is mine
 
 ## filter and sort
 

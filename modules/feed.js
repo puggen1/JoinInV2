@@ -8,10 +8,14 @@ let logOutBtn = document.querySelector("#logOut");
 let profileLink = document.querySelector("#username");
 let postDiv = document.querySelector("#posts");
 let welcome = document.querySelector("#welcomeMessage");
+// just target input inside modal to send asa value....
+let imgLink = document.querySelector("#imgLink");
 
 //both create post areas here
 let bigScreenPost = document.querySelector("#newPostSmall");
-bigScreenPost.addEventListener("submit", Post.createPost);
+bigScreenPost.addEventListener("submit", () => {
+  Post.createPost(event, imgLink);
+});
 //double validation for is logged in so token must be used as well
 function isLoggedIn() {
   if (authToken && isLoggedInStatus) {
@@ -49,7 +53,6 @@ async function testPost() {
     postArr.push(new Post(post));
   }
   for (let post of postArr) {
-    post.logPost();
     let singlePost = document.createElement("div");
     singlePost.classList.add("container", "col-11", "col-xl-10", "gy-3");
     singlePost.innerHTML = post.htmlPost();

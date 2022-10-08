@@ -1,5 +1,6 @@
 import globalApiCall from "./globalApiCall.mjs";
-
+import { changeColor, changeTypeAndColor,  } from "./responses.mjs";
+//import { Modal } from "../node_modules/bootstrap/js/dist/modal.js";
 export default class Post {
   constructor(postData) {
     this.postData = postData;
@@ -22,7 +23,7 @@ export default class Post {
       buttons += `<div class="dropdown">
       <button class="btn dropdown-toggle btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">options</button>
       <ul class="dropdown-menu">
-          <li><button type="button" data-bs-target="#updatePost${this.postData.id}" data-id="${this.postData.id}" class="btn postAction dropdown-item">update</button></li>
+          <li><button type="button" data-bs-target="#updatePost" data-id="${this.postData.id}" class="btn postAction dropdown-item">update</button></li>
           <li><button type="button" data-id="${this.postData.id}" class="btn postAction dropdown-item">delete</button></li>
       </ul>
   </div>`;
@@ -92,9 +93,46 @@ export default class Post {
     return userDiv;
   }
   //can be changed to non static if i send id with it
-  updatePost() {
+   async showUpdatePostModal() {
     //this works but is not what i expected
     let id = this.getAttribute("data-id");
+    let update = bootstrap.Modal.getOrCreateInstance("#updatePost")
+    update.show();
+    let updateform = document.querySelector("#updatePostForm");
+    updateform.addEventListener("submit",()=>{
+       Post.updatePost(event, id, update)})
+    
+
+  }
+  static async updatePost(e, id, modal){
+    e.preventDefault();
+    let {title = e.target[0], body = e.target[1], media = e.target[2]} = e; 
+    let token = localStorage.getItem("token");
+    let bodyToSend = {title: title.value, body: body.value};
+    //arr fro loop
+    let htmlArr = [title, body];
+    if(media.value){
+      bodyToSend.media = media.value;
+    }
+    if(title.value, body.value){
+      let response = await globalApiCall(`social/posts/${id}`, token, "PUT", bodyToSend)
+      console.log(response);
+      htmlArr.forEach((input)=>{
+        changeColor(input, true)
+      })
+      modal.hide();
+    }
+    else{
+      htmlArr.forEach((input)=>{
+        if(!input.value){
+          changeColor(input, false)
+        }
+        else{
+          changeColor(input, true)
+
+      }
+        })
+      }
   }
   async deletePost() {
     let id = this.getAttribute("data-id");
@@ -109,7 +147,7 @@ export default class Post {
   addEvent(singlePost) {
     let postActions = singlePost.querySelectorAll(".postAction");
     if (postActions.length > 0) {
-      postActions[0].addEventListener("click", this.updatePost);
+      postActions[0].addEventListener("click", this.showUpdatePostModal);
       postActions[1].addEventListener("click", this.deletePost);
     }
   }

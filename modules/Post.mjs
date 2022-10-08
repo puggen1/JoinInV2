@@ -121,6 +121,10 @@ export default class Post {
         changeColor(input, true)
       })
       modal.hide();
+      for(let input of e.target){
+        input.value = "";
+        changeTypeAndColor(input, "border")
+      }
     }
     else{
       htmlArr.forEach((input)=>{

@@ -50,12 +50,14 @@ function changeColor(htmlElement, status = true) {
  * changeTypeAndColor(htmlDIV, "alert", "success")
  * ```
  */
-function changeTypeAndColor(htmlElement, type, colorType) {
+function changeTypeAndColor(htmlElement, type, colorType="") {
   //removes all color if any and adds new... might need to check class list..
   for (let color of colorList) {
     htmlElement.classList.remove(`${type}-${color}`);
   }
-  htmlElement.classList.add(`${type}-${colorType}`);
+  if(type, colorType){
+    htmlElement.classList.add(`${type}-${colorType}`);
+  }
 }
 /**
  *

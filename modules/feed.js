@@ -44,7 +44,7 @@ function feedInitiator() {
     testPost();
   } else {
     createAlert("notLoggedIn", "h1", "beforebegin")
-    displayResponse(document.querySelector("#notLoggedIn"), `<p class="m-0">Not logget in</p>`)
+    displayResponse(document.querySelector("#notLoggedIn"), `<p class="m-0">Not logget in</p>`, true)
     logOutBtn.innerHTML = "Log in";
     profileLink.innerHTML = "";
     logOutBtn.setAttribute("href", "./index.html");

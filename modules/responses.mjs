@@ -63,12 +63,19 @@ function changeTypeAndColor(htmlElement, type, colorType="") {
  *
  * @param {htmlDOM} htmlElement the html element that you want yo add innerHTML to
  * @param {string} message the message that should be added
+ * @param {boolean} dismissable if the button for dismiss should be shown or not
  * @example ```js
  * displayResponse(htmlDIV, "<p>This is an paragraph</p>")
  * ```
  */
-function displayResponse(htmlElement, message) {
-  htmlElement.innerHTML = message + `<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+function displayResponse(htmlElement, message, dismissable=false) {
+  let alternative = `<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`
+  if(dismissable){
+    htmlElement.innerHTML = message + alternative;
+  }
+  else{
+    htmlElement.innerHTML = message
+  }
 }
 function createAlert(id, target, posistion){
   let targetedHtmlElement = document.querySelector(target)

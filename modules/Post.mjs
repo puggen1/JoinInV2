@@ -37,11 +37,13 @@ export default class Post {
    * @returns html with values from the postData
    */
   htmlPost() {
+    this.time()
     let user = localStorage.getItem("username");
     let buttons = this.customButtons(user);
     let picture = Post.postPicture(this.postData);
     let profile = Post.postProfile(this.postData);
-    let { title, body, author, created /*updated*/ } = this.postData;
+    let [status, date, time] = this.time();
+    let { title, body /*updated*/ } = this.postData;
     //<div class="container col-11 col-xl-10 gy-3"></div>
     let html = `
     <div class="card px-xl-4">
@@ -55,8 +57,8 @@ export default class Post {
                     <div class="d-flex mt-3 justify-content-between ">
                     ${buttons}
                     <div class="d-flex justify-content-end">
-                        <p class="m-2">${created}</p>
-                        <!--<p class="m-2">25 aug</p>-->
+                        <p class="m-2">${status} ${time}</p>
+                        <p class="m-2">${date}</p>
                     </div>
                 </div>
             </div>
@@ -179,5 +181,27 @@ export default class Post {
       );
       console.log(response);
     }
+  }
+  time(){
+    let options = {month: 'long'}
+    let current = new Date(this.postData.created)
+    let status = "<b>created: </b>";
+    if(this.postData.updated > this.postData.created){
+      current = new Date(this.postData.updated)
+      status = "<b>updated: </b>";
+    }
+    //hours and minutes
+    let hour = current.getHours();
+    let minutes = current.getMinutes();
+    let time = `${hour}:${minutes}`;
+
+    //day and month
+    let date = current.getDate();
+    let month = new Intl.DateTimeFormat("en-US", options).format(current) 
+    let fullDate = `${date} ${month}`;
+    //hmm
+    //or
+
+    return [status, fullDate, time]
   }
 }

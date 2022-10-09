@@ -163,12 +163,12 @@ export default class Post {
    */
   static async createPost(event, imageLink) {
     event.preventDefault();
-
     let token = localStorage.getItem("token");
-    let { title = event.target[0].value, body = event.target[1].value } = event;
+    let { title = event.target[0], body = event.target[1] } = event;
+    let contentArr = [title, body];
 
-    if (title && body) {
-      let apiBody = { title, body };
+    if (title.value && body.value) {
+      let apiBody = { title: title.value, body: body.value };
       if (imageLink.value) {
         apiBody.media = imageLink.value;
       }
@@ -180,6 +180,17 @@ export default class Post {
         apiBody
       );
       console.log(response);
+      contentArr.forEach(ele => {
+        changeTypeAndColor(ele, "border", "")
+      })
+    }
+    else{
+      contentArr.forEach(ele => {
+        if(!ele.value){
+          changeTypeAndColor(ele, "border", "danger")
+
+        }
+      })
     }
   }
   time(){

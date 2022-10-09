@@ -15,9 +15,9 @@ let imgLink = document.querySelector("#imgLink");
 
 //alert for not logged in
 
-//both create post areas here
-let bigScreenPost = document.querySelector("#newPostSmall");
-bigScreenPost.addEventListener("submit", () => {
+//create post areas here
+let postForm = document.querySelector("#newPostSmall");
+postForm.addEventListener("submit", () => {
   Post.createPost(event, imgLink);
 });
 //double validation for is logged in so token must be used as well

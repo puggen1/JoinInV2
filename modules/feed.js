@@ -54,7 +54,7 @@ async function testPost() {
   }
   for (let post of postArr) {
     let singlePost = document.createElement("div");
-    singlePost.classList.add("container", "col-11", "col-xl-10", "gy-3");
+    singlePost.classList.add("container", "col-11", "col-xl-10","my-3");
     singlePost.innerHTML = post.htmlPost();
     postDiv.insertAdjacentElement("beforeend", singlePost);
     //this will be targeted remember not run every time

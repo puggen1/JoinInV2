@@ -51,7 +51,7 @@ export default class Post {
                 ${profile}
                 <h3 class="">${title}</h3>
                   ${picture}
-                    <p class="card-text ">
+                    <p class="card-text col-10">
                     ${body}
                        </p>
                     <div class="d-flex mt-3 justify-content-between ">
@@ -75,7 +75,7 @@ export default class Post {
     let img = "";
 
     if (post.media) {
-      img = `<img src="${post.media}" class="img-fluid " alt="test alt">`;
+      img = `<img src="${post.media}" class="img-fluid" alt="test alt">`;
     }
     return img;
   }

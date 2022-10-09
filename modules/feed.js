@@ -1,6 +1,7 @@
 import Post from "./Post.mjs";
 import globalApiCall from "./globalApiCall.mjs";
 let allPosts = "social/posts?_author=true&_comments=true&_reactions=true";
+import {createAlert, displayResponse} from "./responses.mjs"
 let authToken = localStorage.getItem("token");
 let userName = localStorage.getItem("username");
 let isLoggedInStatus = localStorage.getItem("isLoggedIn");
@@ -10,6 +11,9 @@ let postDiv = document.querySelector("#posts");
 let welcome = document.querySelector("#welcomeMessage");
 // just target input inside modal to send asa value....
 let imgLink = document.querySelector("#imgLink");
+
+
+//alert for not logged in
 
 //both create post areas here
 let bigScreenPost = document.querySelector("#newPostSmall");
@@ -36,9 +40,11 @@ function feedInitiator() {
   if (status) {
     profileLink.innerHTML = userName;
     logOutBtn.addEventListener("click", logOut);
-    welcome.innerHTML = `Welcome <b>${userName}</b> here is whats new`;
+    welcome.innerHTML = `Welcome <b>${userName}</b> here is whats new:`;
     testPost();
   } else {
+    createAlert("notLoggedIn", "h1", "beforebegin")
+    displayResponse(document.querySelector("#notLoggedIn"), `<p class="m-0">Not logget in</p>`)
     logOutBtn.innerHTML = "Log in";
     profileLink.innerHTML = "";
     logOutBtn.setAttribute("href", "./index.html");

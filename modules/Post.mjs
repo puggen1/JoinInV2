@@ -91,7 +91,7 @@ export default class Post {
       img = post.author.avatar;
     }
     let avatar = `<img src="${img}" class="rounded-circle img-fluid col-1"  alt="user test alt">`;
-    let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <p class="mb-0"><b class="me-1">${post.author.name}</b>Says:</p></div>`;
+    let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <a href="./profile.html?username=${post.author.name}"class="mb-0 link-dark"><b class="me-1">${post.author.name}</a></b>Says:</div>`;
     return userDiv;
   }
   //can be changed to non static if i send id with it

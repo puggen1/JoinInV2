@@ -68,7 +68,15 @@ function changeTypeAndColor(htmlElement, type, colorType="") {
  * ```
  */
 function displayResponse(htmlElement, message) {
-  htmlElement.innerHTML = message;
+  htmlElement.innerHTML = message + `<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+}
+function createAlert(id, target, posistion){
+  let targetedHtmlElement = document.querySelector(target)
+  let alert = document.createElement("div");
+  alert.classList.add("mt-3", "col-7", "alert", "alert-danger", "alert-dismissable", "justify-content-between", "d-flex");
+  alert.id = id
+  alert.role="alert";
+  targetedHtmlElement.insertAdjacentElement(posistion, alert);
 }
 
-export { hiddenToggler, changeColor, displayResponse, changeTypeAndColor };
+export { hiddenToggler, changeColor, displayResponse, changeTypeAndColor, createAlert};

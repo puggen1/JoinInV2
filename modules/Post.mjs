@@ -1,5 +1,10 @@
 import globalApiCall from "./globalApiCall.mjs";
-import { changeColor, changeTypeAndColor,  } from "./responses.mjs";
+import {
+  changeColor,
+  changeTypeAndColor,
+  createAlert,
+  displayResponse,
+} from "./responses.mjs";
 //import { Modal } from "../node_modules/bootstrap/js/dist/modal.js";
 export default class Post {
   constructor(postData) {
@@ -37,7 +42,7 @@ export default class Post {
    * @returns html with values from the postData
    */
   htmlPost() {
-    this.time()
+    this.time();
     let user = localStorage.getItem("username");
     let buttons = this.customButtons(user);
     let picture = Post.postPicture(this.postData);
@@ -58,7 +63,7 @@ export default class Post {
                     ${buttons}
                     <div class="d-flex justify-content-end">
                         <p class="m-2">${status} ${time}</p>
-                        <p class="m-2">${date}</p>
+                        <p class="m-2 ms-0">${date}</p>
                     </div>
                 </div>
             </div>
@@ -95,50 +100,51 @@ export default class Post {
     return userDiv;
   }
   //can be changed to non static if i send id with it
-   async showUpdatePostModal() {
+  async showUpdatePostModal() {
     //this works but is not what i expected
     let id = this.getAttribute("data-id");
-    let update = bootstrap.Modal.getOrCreateInstance("#updatePost")
+    let update = bootstrap.Modal.getOrCreateInstance("#updatePost");
     update.show();
     let updateform = document.querySelector("#updatePostForm");
-    updateform.addEventListener("submit",()=>{
-       Post.updatePost(event, id, update)})
-    
-
+    updateform.addEventListener("submit", () => {
+      Post.updatePost(event, id, update);
+    });
   }
-  static async updatePost(e, id, modal){
+  static async updatePost(e, id, modal) {
     e.preventDefault();
-    let {title = e.target[0], body = e.target[1], media = e.target[2]} = e; 
+    let { title = e.target[0], body = e.target[1], media = e.target[2] } = e;
     let token = localStorage.getItem("token");
-    let bodyToSend = {title: title.value, body: body.value};
+    let bodyToSend = { title: title.value, body: body.value };
     //arr fro loop
     let htmlArr = [title, body];
-    if(media.value){
+    if (media.value) {
       bodyToSend.media = media.value;
     }
-    if(title.value, body.value){
-      let response = await globalApiCall(`social/posts/${id}`, token, "PUT", bodyToSend)
+    if ((title.value, body.value)) {
+      let response = await globalApiCall(
+        `social/posts/${id}`,
+        token,
+        "PUT",
+        bodyToSend
+      );
       console.log(response);
-      htmlArr.forEach((input)=>{
-        changeColor(input, true)
-      })
+      htmlArr.forEach((input) => {
+        changeColor(input, true);
+      });
       modal.hide();
-      for(let input of e.target){
+      for (let input of e.target) {
         input.value = "";
-        changeTypeAndColor(input, "border")
+        changeTypeAndColor(input, "border");
       }
-    }
-    else{
-      htmlArr.forEach((input)=>{
-        if(!input.value){
-          changeColor(input, false)
+    } else {
+      htmlArr.forEach((input) => {
+        if (!input.value) {
+          changeColor(input, false);
+        } else {
+          changeColor(input, true);
         }
-        else{
-          changeColor(input, true)
-
-      }
-        })
-      }
+      });
+    }
   }
   async deletePost() {
     let id = this.getAttribute("data-id");
@@ -163,6 +169,8 @@ export default class Post {
    */
   static async createPost(event, imageLink) {
     event.preventDefault();
+    let alert = createAlert("postMessage", "#newPost", "beforeend");
+
     let token = localStorage.getItem("token");
     let { title = event.target[0], body = event.target[1] } = event;
     let contentArr = [title, body];
@@ -180,25 +188,31 @@ export default class Post {
         apiBody
       );
       console.log(response);
-      contentArr.forEach(ele => {
-        changeTypeAndColor(ele, "border", "")
-      })
-    }
-    else{
-      contentArr.forEach(ele => {
-        if(!ele.value){
-          changeTypeAndColor(ele, "border", "danger")
-
+      contentArr.forEach((ele) => {
+        changeTypeAndColor(ele, "border", "");
+      });
+      displayResponse(alert, `<p class="m-0">Post created</p>`, true);
+      changeTypeAndColor(alert, "alert", "success");
+    } else {
+      contentArr.forEach((ele) => {
+        if (!ele.value) {
+          changeTypeAndColor(ele, "border", "danger");
         }
-      })
+      });
+      displayResponse(
+        alert,
+        `<p class="m-0">title and body is required</p>`,
+        true
+      );
+      changeTypeAndColor(alert, "alert", "danger");
     }
   }
-  time(){
-    let options = {month: 'long'}
-    let current = new Date(this.postData.created)
+  time() {
+    let options = { month: "long" };
+    let current = new Date(this.postData.created);
     let status = "<b>created: </b>";
-    if(this.postData.updated > this.postData.created){
-      current = new Date(this.postData.updated)
+    if (this.postData.updated > this.postData.created) {
+      current = new Date(this.postData.updated);
       status = "<b>updated: </b>";
     }
     //hours and minutes
@@ -208,11 +222,11 @@ export default class Post {
 
     //day and month
     let date = current.getDate();
-    let month = new Intl.DateTimeFormat("en-US", options).format(current) 
+    let month = new Intl.DateTimeFormat("en-US", options).format(current);
     let fullDate = `${date} ${month}`;
     //hmm
     //or
 
-    return [status, fullDate, time]
+    return [status, fullDate, time];
   }
 }

@@ -50,12 +50,12 @@ function changeColor(htmlElement, status = true) {
  * changeTypeAndColor(htmlDIV, "alert", "success")
  * ```
  */
-function changeTypeAndColor(htmlElement, type, colorType="") {
+function changeTypeAndColor(htmlElement, type, colorType = "") {
   //removes all color if any and adds new... might need to check class list..
   for (let color of colorList) {
     htmlElement.classList.remove(`${type}-${color}`);
   }
-  if(type, colorType){
+  if ((type, colorType)) {
     htmlElement.classList.add(`${type}-${colorType}`);
   }
 }
@@ -68,22 +68,36 @@ function changeTypeAndColor(htmlElement, type, colorType="") {
  * displayResponse(htmlDIV, "<p>This is an paragraph</p>")
  * ```
  */
-function displayResponse(htmlElement, message, dismissable=false) {
-  let alternative = `<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`
-  if(dismissable){
+function displayResponse(htmlElement, message, dismissable = false) {
+  let alternative = `<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+  if (dismissable) {
     htmlElement.innerHTML = message + alternative;
-  }
-  else{
-    htmlElement.innerHTML = message
+  } else {
+    htmlElement.innerHTML = message;
   }
 }
-function createAlert(id, target, posistion){
-  let targetedHtmlElement = document.querySelector(target)
+function createAlert(id, target, posistion) {
+  let targetedHtmlElement = document.querySelector(target);
   let alert = document.createElement("div");
-  alert.classList.add("mt-3", "col-7", "alert", "alert-danger", "alert-dismissable", "justify-content-between", "d-flex");
-  alert.id = id
-  alert.role="alert";
+  alert.classList.add(
+    "mt-3",
+    "col-7",
+    "alert",
+    "alert-danger",
+    "alert-dismissable",
+    "justify-content-between",
+    "d-flex"
+  );
+  alert.id = id;
+  alert.role = "alert";
   targetedHtmlElement.insertAdjacentElement(posistion, alert);
+  return alert;
 }
 
-export { hiddenToggler, changeColor, displayResponse, changeTypeAndColor, createAlert};
+export {
+  hiddenToggler,
+  changeColor,
+  displayResponse,
+  changeTypeAndColor,
+  createAlert,
+};

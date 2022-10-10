@@ -1,9 +1,27 @@
-# things i have to do before merge:
+# things i need to do on feed
 
-## catched error
+## update feature
 
-figure out why error is shown when im catching it...?
+## add responses if error or success?
 
-## login after register
+## either change or fix add link modal
 
-if fitting, make the user automatically login after creating account...
+## post time need to be right
+
+## small visual fixes
+
+## friends if any should be shown, change function
+
+## profile picture on top left, (profile link)
+
+## fix the div where posts are inside.
+
+## create post
+
+## filter and sort
+
+## search
+
+### credit
+
+https://unsplash.com/photos/K4mSJ7kc0As

@@ -50,23 +50,64 @@ function changeColor(htmlElement, status = true) {
  * changeTypeAndColor(htmlDIV, "alert", "success")
  * ```
  */
-function changeTypeAndColor(htmlElement, type, colorType) {
+function changeTypeAndColor(htmlElement, type, colorType = "") {
   //removes all color if any and adds new... might need to check class list..
   for (let color of colorList) {
     htmlElement.classList.remove(`${type}-${color}`);
   }
-  htmlElement.classList.add(`${type}-${colorType}`);
+  if ((type, colorType)) {
+    htmlElement.classList.add(`${type}-${colorType}`);
+  }
 }
 /**
  *
  * @param {htmlDOM} htmlElement the html element that you want yo add innerHTML to
  * @param {string} message the message that should be added
+ * @param {boolean} dismissable if the button for dismiss should be shown or not
  * @example ```js
  * displayResponse(htmlDIV, "<p>This is an paragraph</p>")
  * ```
  */
-function displayResponse(htmlElement, message) {
-  htmlElement.innerHTML = message;
+function displayResponse(htmlElement, message, dismissable = false) {
+  let alternative = `<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+  if (dismissable) {
+    htmlElement.innerHTML = message + alternative;
+  } else {
+    htmlElement.innerHTML = message;
+  }
+}
+/**
+ * @description used to create an alert element to be further used in you code. for example to display an error
+ * @param {string} id wanted id for the element you are creating... might be removied later
+ * @param {string} target id of target you want to place the new element around or inside
+ * @param {string} posistion the possistion of the new element according to the target
+ * @returns the created alert element, do be used further
+ * @example ```js
+ * let alert = createAlert("createPost", "#postForm", "beforeend")
+ * ```
+ */
+function createAlert(id, target, posistion) {
+  let targetedHtmlElement = document.querySelector(target);
+  let alert = document.createElement("div");
+  alert.classList.add(
+    "mt-3",
+    "col-7",
+    "alert",
+    "alert-danger",
+    "alert-dismissable",
+    "justify-content-between",
+    "d-flex"
+  );
+  alert.id = id;
+  alert.role = "alert";
+  targetedHtmlElement.insertAdjacentElement(posistion, alert);
+  return alert;
 }
 
-export { hiddenToggler, changeColor, displayResponse, changeTypeAndColor };
+export {
+  hiddenToggler,
+  changeColor,
+  displayResponse,
+  changeTypeAndColor,
+  createAlert,
+};

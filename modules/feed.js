@@ -2,6 +2,7 @@ import Post from "./Post.mjs";
 import globalApiCall from "./globalApiCall.mjs";
 let allPosts = "social/posts?_author=true&_comments=true&_reactions=true";
 import { createAlert, displayResponse } from "./responses.mjs";
+import { filterPosts } from "./filter.mjs";
 let authToken = localStorage.getItem("token");
 let userName = localStorage.getItem("username");
 let isLoggedInStatus = localStorage.getItem("isLoggedIn");
@@ -66,3 +67,11 @@ async function showFeed() {
   }
   //postDiv.innerHTML = html;
 }
+
+let premadeButtons = document.querySelectorAll("#preMade button");
+console.log(premadeButtons);
+premadeButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    filterPosts(e, "test");
+  });
+});

@@ -241,4 +241,19 @@ export default class Post {
 
     return [status, fullDate, time];
   }
+  /**
+   *
+   * @param {Object} post class instance of Post
+   * @param {*} postDiv target div where content will be added to
+   */
+  static displayPosts(post, postDiv) {
+    let singlePost = document.createElement("div");
+    singlePost.classList.add("container", "col-11", "col-xl-10", "my-3");
+    singlePost.innerHTML = post.htmlPost();
+    postDiv.insertAdjacentElement("beforeend", singlePost);
+    //so it only runs on my posts
+    if (post.postData.author.name === localStorage.getItem("username")) {
+      post.addEvent(singlePost);
+    }
+  }
 }

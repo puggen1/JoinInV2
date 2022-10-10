@@ -42,12 +42,8 @@ function feedInitiator() {
     welcome.innerHTML = `Welcome <b>${userName}</b> here is whats new:`;
     showFeed();
   } else {
-    createAlert("notLoggedIn", "h1", "beforebegin");
-    displayResponse(
-      document.querySelector("#notLoggedIn"),
-      `<p class="m-0">Not logget in</p>`,
-      true
-    );
+    let alert = createAlert("notLoggedIn", "h1", "beforebegin");
+    displayResponse(alert, `<p class="m-0">Not logget in</p>`, true);
     logOutBtn.innerHTML = "Log in";
     profileLink.innerHTML = "";
     logOutBtn.setAttribute("href", "./index.html");

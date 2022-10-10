@@ -146,6 +146,9 @@ export default class Post {
       });
     }
   }
+  /**
+   * @description takes id from an button, deletes the post with that id
+   */
   async deletePost() {
     let id = this.getAttribute("data-id");
     let token = localStorage.getItem("token");
@@ -156,6 +159,11 @@ export default class Post {
       console.log("cancelled");
     }
   }
+  /**
+   * @description adds eventlisteners to the buttons of an post, so events will be triggered when clicked
+   * @param {htmlDOM} singlePost a html post, that the user created, with the update and delete buttons
+   *
+   */
   addEvent(singlePost) {
     let postActions = singlePost.querySelectorAll(".postAction");
     if (postActions.length > 0) {
@@ -207,6 +215,10 @@ export default class Post {
       changeTypeAndColor(alert, "alert", "danger");
     }
   }
+  /**
+   *
+   * @returns {array} of values for a single post(time and date for creation or updated)
+   */
   time() {
     let options = { month: "long" };
     let current = new Date(this.postData.created);

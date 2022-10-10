@@ -76,6 +76,16 @@ function displayResponse(htmlElement, message, dismissable = false) {
     htmlElement.innerHTML = message;
   }
 }
+/**
+ * @description used to create an alert element to be further used in you code. for example to display an error
+ * @param {string} id wanted id for the element you are creating... might be removied later
+ * @param {string} target id of target you want to place the new element around or inside
+ * @param {string} posistion the possistion of the new element according to the target
+ * @returns the created alert element, do be used further
+ * @example ```js
+ * let alert = createAlert("createPost", "#postForm", "beforeend")
+ * ```
+ */
 function createAlert(id, target, posistion) {
   let targetedHtmlElement = document.querySelector(target);
   let alert = document.createElement("div");

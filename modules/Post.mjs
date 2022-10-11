@@ -59,9 +59,9 @@ export default class Post {
                     <p class="card-text col-10">
                     ${body}
                        </p>
-                    <div class="d-flex mt-3 justify-content-between ">
+                    <div class="d-flex mt-3 justify-content-between align-items-center">
                     ${buttons}
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end ">
                         <p class="m-2">${status} ${time}</p>
                         <p class="m-2 ms-0">${date}</p>
                     </div>

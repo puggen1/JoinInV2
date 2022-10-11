@@ -83,7 +83,7 @@ premadeButtons.forEach((button) => {
     }
   });
 });
-let sortButtons = document.querySelectorAll("#sortOptions a");
+let sortButtons = document.querySelectorAll("#sortOptions button");
 sortButtons.forEach((button) => {
   button.addEventListener("click", async (e) => {
     //if else statement is to "reset filters"

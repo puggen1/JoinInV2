@@ -55,8 +55,8 @@
             aria-expanded="false" aria-controls="newPost" data-bs-target="#newPost" type="button"><i
               class="bi bi-plus d-flex align-top align-content-center justify-content-center text-light fs-1"></i></button>
         </div>
-        <div class="container mt-lg-4 col-11 col-xl-10 gy-3">
-          <form class="collapse mb-4  d-lg-block" id="newPost">
+        <div class="container mt-lg-4 col-11 col-xl-10 ">
+          <form class="collapse mb-3  d-lg-block" id="newPost">
             <p class="display-6">Write post here</p>
             <input type="text" id="newPostTitle" class="form-control mb-1" placeholder="title">
             <textarea class="form-control mh-50 h-50 " name="newPost" maxlength="400" id="newPostProfile"
@@ -65,29 +65,26 @@
               type="button">+ Add Image</button><button class="btn btn-success m-2 col-auto">Post</button>
           </form>
         </div>
-       <section class="p-0 d-flex justify-content-center">
-        <div class="d-flex flex-wrap col-10" id="filter">
-          <div id="preMade" class="col-12 ">
-            <button class="btn btn-primary col-2 px-0 m-1" id="all" >all</button>
-            <button class="btn btn-primary col-2 px-0 m-1" id="media">media</button>
-            <button class="btn btn-primary col-2 px-0 m-1" id="today">today</button>
-            <button class="btn btn-primary col-2 px-0 m-1" id="mine" >mine</button>
-
-      </div>
-        <div class="dropdown m-1">
+        <section class="container mt-lg-4 col-11 col-xl-10 d-flex flex-wrap" id="filter">
+          <div id="preMade" class="col-12 d-flex mb-3">
+              <div class="col-2 ps-0 px-2"><button class="btn btn-primary  col-12 " id="all" >all</button></div>
+              <div class="col-2 px-2"><button class="btn btn-primary  col-12 " id="media">media</button></div>
+              <div class="col-2 px-2"><button class="btn btn-primary  col-12 " id="today">today</button></div>
+              <div class="col-2 px-2"><button class="btn btn-primary  col-12 " id="mine" >mine</button></div>
+          </div>
+      
+        <div class="dropdown my-1 col-2 ">
           <button class="btn btn-secondary  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Sort by
           </button>
           <ul id="sortOptions" class="dropdown-menu">
-            <li><a class="dropdown-item" id="new" href="#">newest</a></li>
-            <li><a class="dropdown-item" id="old" href="#">Oldest</a></li>
+            <li><button class="dropdown-item" id="new" >newest</button></li>
+            <li><button class="dropdown-item" id="old" >Oldest</button></li>
           </ul>
         </div>
-        <div id="search" class="col-7 m-1">
+        <div id="search" class="my-1 col-4">
           <input type="search" class="form-control " placeholder="search by title">
         </div>
-        
-      </div>
        </section>
         <div class="p-0 " id="posts">
 

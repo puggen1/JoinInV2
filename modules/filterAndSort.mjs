@@ -75,7 +75,7 @@ function search(input, posts) {
   return posts.filter(searchFilter, input);
 }
 function searchFilter(post) {
-  if (post.postData.title.includes(this)) {
+  if (post.postData.title.toLowerCase().includes(this.toLowerCase())) {
     return true;
   }
 }

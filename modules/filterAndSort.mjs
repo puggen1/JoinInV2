@@ -1,20 +1,17 @@
 import Post from "./Post.mjs";
-function filterPosts(event, posts, target) {
-  target.innerHTML = "";
+function filterPosts(event, posts) {
   let filteredPosts = {};
   let keyword = event.target.id;
-  console.log(keyword);
-  console.log(posts);
   if (keyword === "media") {
     filteredPosts = posts.filter(filterMedia);
   } else if (keyword === "today") {
     filteredPosts = posts.filter(filterTodaysPosts);
-  } else {
+  } else if (keyword === "mine") {
     filteredPosts = posts.filter(filterMyPosts);
+  } else {
+    return posts;
   }
-  for (let post of filteredPosts) {
-    Post.displayPosts(post, target);
-  }
+  return filteredPosts;
 }
 function filterMedia(post) {
   if (post.postData.media) {
@@ -35,4 +32,51 @@ function filterMyPosts(post) {
     return true;
   }
 }
-export { filterPosts };
+
+function sortPosts(event, posts) {
+  let sortType = event.target.id;
+  let sortedPosts = [];
+  if (sortType === "new") {
+    console.log("should sort as newest first");
+    sortedPosts = posts.sort((postA, postB) => {
+      let postAUpdate = new Date(postA.postData.updated);
+      let postBUpdate = new Date(postB.postData.updated);
+      if (postAUpdate > postBUpdate) {
+        console.log("A");
+        return -1;
+      } else if (postAUpdate < postBUpdate) {
+        console.log("B");
+        return 1;
+      } else {
+        console.log("?");
+        return 0;
+      }
+    });
+  } else {
+    console.log("should be sorted as old first");
+    sortedPosts = posts.sort((postA, postB) => {
+      let postAUpdate = new Date(postA.postData.updated);
+      let postBUpdate = new Date(postB.postData.updated);
+      if (postAUpdate < postBUpdate) {
+        console.log("B");
+        return -1;
+      } else if (postAUpdate > postBUpdate) {
+        console.log("A");
+        return 1;
+      } else {
+        console.log("?");
+        return 0;
+      }
+    });
+  }
+  return sortedPosts;
+}
+function search(input, posts) {
+  return posts.filter(searchFilter, input);
+}
+function searchFilter(post) {
+  if (post.postData.title.includes(this)) {
+    return true;
+  }
+}
+export { filterPosts, sortPosts, search };

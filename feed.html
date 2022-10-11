@@ -68,19 +68,25 @@
        <section class="p-0 d-flex justify-content-center">
         <div class="d-flex flex-wrap col-10" id="filter">
           <div id="preMade" class="col-12 ">
-        <button class="btn btn-primary col-3 px-0 m-1" id="media">media</button>
-        <button class="btn btn-primary col-3 px-0 m-1" id="today">today</button>
-        <button class="btn btn-primary col-3 px-0 m-1" id="mine" >mine</button>
+            <button class="btn btn-primary col-2 px-0 m-1" id="all" >all</button>
+            <button class="btn btn-primary col-2 px-0 m-1" id="media">media</button>
+            <button class="btn btn-primary col-2 px-0 m-1" id="today">today</button>
+            <button class="btn btn-primary col-2 px-0 m-1" id="mine" >mine</button>
+
       </div>
         <div class="dropdown m-1">
           <button class="btn btn-secondary  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Sort by
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">newest</a></li>
-            <li><a class="dropdown-item" href="#">Oldest</a></li>
+          <ul id="sortOptions" class="dropdown-menu">
+            <li><a class="dropdown-item" id="new" href="#">newest</a></li>
+            <li><a class="dropdown-item" id="old" href="#">Oldest</a></li>
           </ul>
         </div>
+        <div id="search" class="col-7 m-1">
+          <input type="search" class="form-control " placeholder="search by title">
+        </div>
+        
       </div>
        </section>
         <div class="p-0 " id="posts">

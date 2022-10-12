@@ -48,7 +48,15 @@ async function singlePost(id, token, user) {
     `;
     //created post
     let postElement = document.createElement("div");
-    postElement.classList.add("col-12", "col-lg-4", "mt-4");
+    postElement.classList.add(
+      "col-12",
+      "col-lg-4",
+      "mt-4",
+      "bg-white",
+      "rounded-2",
+      "p-3",
+      "mb-4"
+    );
     postElement.innerHTML = `${postContent}<div class="d-flex mt-4 justify-content-center"><a class="btn btn-primary" href="feed.html">Back</a></div>`;
     post.addEvent(postElement);
     htmlMain.insertAdjacentElement("afterbegin", postElement);

@@ -12,14 +12,66 @@
     <title>Post title here?</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <header class="row col-12 align-content-center justify-content-center p-0 py-4  m-0 align-items-center bg-warning">
-        <a class="navbar-brand display-1 fs-1 m-0 text-center col-6 order-lg-2 col-lg-4" href="#">Join In</a>
-
-    </header>
+    <header class="row col-12 align-content-center justify-content-center p-0 m-0 align-items-center bg-warning">
+        <nav class="navbar navbar-expand-lg bg-warning ">
+          <div class="container-fluid">
+            <button class="navbar-toggler col-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+              aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand display-1 fs-1 m-0 text-center col-6 order-lg-2 col-lg-2 col-lg-2" href="feed.html">Join In</a>
+            <div class="order-lg-3 col-auto m-0 col-lg-5 d-flex   justify-content-end"> <a
+                class=" navbar-brand display-2 text-center d-lg-none " href="#" ></a></div>
+    
+            <div class="collapse navbar-collapse order-lg-1 col-lg-5 col-xl-4 justify-content-md-center" id="navbar">
+              <ul class="navbar-nav col-md-6 col-lg-12">
+                <li class="nav-item col-md-3 col-lg-2 col-xl-auto">
+                  <a class="nav-link text-dark" aria-current="page" id="username" href="profile.html">Username Here</a>
+                </li>
+                <li class="nav-item col-md-auto ms-lg-3 col-lg-2 col-xl-auto">
+                  <a class="nav-link text-dark px-lg-0" aria-current="page" id="logOut" href="./post.html">(Log out)</a>
+                </li>
+                <form class="d-flex d-xl-none" role="search">
+                  <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+          </div>
+        </nav>
+      </header>
     <main class="row  p-0 m-0 justify-content-center ">
-        <div id="post" class="col-12 col-lg-4">
-            
+        
+
+
+
+
+         <!-- to update post-->
+    <div class="modal fade" id="updatePost" tabindex="-1" aria-labelledby="#updatePostLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="updatePostLabel">Add image link here:</h1>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <form id="updatePostForm">
+        <div class="modal-body">
+            <label for="updateTitle">Title</label>
+          <input type="text" id="updateTitle" class="form-control" placeholder="title">
+          <label for="updateBody">Content</label>
+          <input type="text" id="udateBody" class="form-control" placeholder="write here">
+          <label for="updateMedia">Media</label>
+          <input type="text" id="UpdateMedia" class="form-control" placeholder="write here">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+          <button type="submit" class="btn btn-primary" >update post</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
     </main>
 
 

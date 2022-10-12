@@ -36,7 +36,6 @@ async function initiateProfile() {
   }
   url += "?_posts=true";
   let response = await globalApiCall(url, authToken, "GET");
-  console.log(response);
   if (myself) {
     contactHeader.innerHTML = "my contacts";
     //if not my profile:

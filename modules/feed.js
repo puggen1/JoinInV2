@@ -19,10 +19,6 @@ let postArr = [];
 //global list for filtered posts that can be sorted
 let postToShow = [];
 //create post areas here
-let postForm = document.querySelector("#newPost");
-postForm.addEventListener("submit", () => {
-  Post.createPost(event, imgLink);
-});
 
 function feedInitiator() {
   //double validation for is logged in so token must be used as well
@@ -32,6 +28,10 @@ function feedInitiator() {
     logOutInitiate(logOutBtn);
     welcome.innerHTML = `Welcome <b>${userName}</b> here is whats new:`;
     showFeed();
+    let postForm = document.querySelector("#newPost");
+    postForm.addEventListener("submit", () => {
+      Post.createPost(event, imgLink);
+    });
   } else {
     notLoggedIn(profileLink, logOutBtn, "h1");
   }
@@ -50,7 +50,6 @@ async function showFeed() {
 }
 
 let premadeButtons = document.querySelectorAll("#preMade button");
-console.log(premadeButtons);
 premadeButtons.forEach((button) => {
   button.addEventListener("click", async (e) => {
     postToShow = await filterPosts(e, postArr);
@@ -58,8 +57,6 @@ premadeButtons.forEach((button) => {
     for (let post of postToShow) {
       Post.displayPosts(post, postDiv);
     }
-    console.log(postToShow);
-
     //to reset filters:
     if (e.target.id === "all") {
       postArr = postToShow;

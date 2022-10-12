@@ -63,7 +63,9 @@ export default class Post {
                     <p class="card-text col-10">
                     ${body}
                        </p>
+
                     <div class="d-flex mt-3 justify-content-between flex-wrap ">
+
                     ${buttons}
                     <div class="d-flex justify-content-end ">
                         <p class="m-2">${status} ${time}</p>
@@ -99,7 +101,8 @@ export default class Post {
     if (post.author.avatar) {
       img = post.author.avatar;
     }
-    let avatar = `<img src="${img}" class="rounded-circle img-fluid col-1"  alt="">`;
+
+    let avatar = `<img src="${img}" class="rounded-circle img-fluid col-1">`;
     let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <a href="./profile.html?username=${post.author.name}"class="mb-0 link-dark"><b class="me-1">${post.author.name}</a></b>Says:</div>`;
     return userDiv;
   }

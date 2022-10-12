@@ -13,6 +13,7 @@ let postDiv = document.querySelector("#posts");
 let welcome = document.querySelector("#welcomeMessage");
 // just target input inside modal to send asa value....
 let imgLink = document.querySelector("#imgLink");
+
 //global list of all posts initiated
 let postArr = [];
 //global list for filtered posts that can be sorted
@@ -38,19 +39,16 @@ function feedInitiator() {
 feedInitiator();
 async function showFeed() {
   let response = await globalApiCall(allPosts, authToken, "GET");
+
   for (let post of response) {
     postArr.push(new Post(post));
   }
   for (let post of postArr) {
-    let singlePost = document.createElement("div");
-    singlePost.classList.add("container", "col-11", "col-xl-10", "my-3");
-    singlePost.innerHTML = post.htmlPost();
-    postDiv.insertAdjacentElement("beforeend", singlePost);
-    //this will be targeted remember not run every time
-    post.addEvent(singlePost);
+    Post.displayPosts(post, postDiv);
   }
   //postDiv.innerHTML = html;
 }
+
 let premadeButtons = document.querySelectorAll("#preMade button");
 console.log(premadeButtons);
 premadeButtons.forEach((button) => {

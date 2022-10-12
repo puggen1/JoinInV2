@@ -42,6 +42,7 @@ function sortPosts(event, posts) {
       let postAUpdate = new Date(postA.postData.updated);
       let postBUpdate = new Date(postB.postData.updated);
       if (postAUpdate > postBUpdate) {
+
         return -1;
       } else if (postAUpdate < postBUpdate) {
         return 1;
@@ -59,6 +60,7 @@ function sortPosts(event, posts) {
       } else if (postAUpdate > postBUpdate) {
         return 1;
       } else {
+
         return 0;
       }
     });

@@ -28,13 +28,11 @@ export default async function registerUser(event) {
   } = event;
 
   if (username && email && password) {
-    console.log(event);
     let response = await globalApiCall("social/auth/register", "", "POST", {
       name: inputName.value,
       email: inputEmail.value,
       password: inputPassword.value,
     });
-    console.log(response);
     if (!response.email) {
       changeTypeAndColor(registerResponse, "alert", "danger");
       responseMessage = response.message;

@@ -134,7 +134,6 @@ export default class Post {
         "PUT",
         bodyToSend
       );
-      console.log(response);
       htmlArr.forEach((input) => {
         changeColor(input, true);
       });
@@ -142,6 +141,7 @@ export default class Post {
       for (let input of e.target) {
         input.value = "";
         changeTypeAndColor(input, "border");
+        window.location.reload();
       }
     } else {
       htmlArr.forEach((input) => {
@@ -161,7 +161,7 @@ export default class Post {
     let token = localStorage.getItem("token");
     if (confirm("Delete this post?")) {
       let response = await globalApiCall(`social/posts/${id}`, token, "DELETE");
-      console.log(response);
+      window.location.reload();
     } else {
       console.log("cancelled");
     }
@@ -202,7 +202,6 @@ export default class Post {
         "POST",
         apiBody
       );
-      console.log(response);
       contentArr.forEach((ele) => {
         changeTypeAndColor(ele, "border", "");
       });
@@ -221,6 +220,7 @@ export default class Post {
       );
       changeTypeAndColor(alert, "alert", "danger");
     }
+    window.location.reload();
   }
   /**
    *

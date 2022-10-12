@@ -8,7 +8,6 @@ let passwordRegex = /^[a-zA-Z0-9æøåÆØÅ]{8,30}$/;
  * @returns array with booleans that represent  status of each input
  */
 export default async function validate(event) {
-  console.log(event);
   let {
     userName = event.target[0],
     email = event.target[1],

@@ -18,7 +18,6 @@ export default async function loginUser(event) {
     password: inputPassword.value,
   });
   if (response.accessToken || !response.message) {
-    console.log(response);
     hiddenToggler(loginResponse);
     displayResponse(loginResponse, "");
     localStorage.setItem("token", response.accessToken);

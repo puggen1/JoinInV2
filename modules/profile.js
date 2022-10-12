@@ -63,11 +63,11 @@ async function initiateProfile() {
         body = singlePost.postData.body,
       } = post;
       let dates = singlePost.time();
-      posts.innerHTML += `<div class="card px-xl-4 my-2 mx-sm-3 col-12">
+      posts.innerHTML += `<div class="card px-xl-4 my-2 mx-sm-3 col-10 my-2">
       <div class="card-body">
-      <h3 class="">${title}</h3>
+      <h3 class="fs-5">${title}</h3>
         ${picture}
-          <p class="card-text col-10">
+          <p class="card-text col-10 mt-2 fs-6">
           ${body}
              </p>
 

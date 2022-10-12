@@ -1,16 +1,5 @@
-# things i need to do on feed
-
-## either change or fix add link modal
-
-## small visual fixes
-
-## friends if any should be shown, change function
-
-## profile picture on top left, (profile link)
 
 ## fix alignment
-
-## search
 
 ### credit
 

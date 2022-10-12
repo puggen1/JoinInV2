@@ -99,7 +99,7 @@ export default class Post {
     if (post.author.avatar) {
       img = post.author.avatar;
     }
-    let avatar = `<img src="${img}" class="rounded-circle img-fluid col-1"  alt="user test alt">`;
+    let avatar = `<img src="${img}" class="rounded-circle img-fluid col-1"  alt="">`;
     let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <a href="./profile.html?username=${post.author.name}"class="mb-0 link-dark"><b class="me-1">${post.author.name}</a></b>Says:</div>`;
     return userDiv;
   }
@@ -244,5 +244,20 @@ export default class Post {
     //or
 
     return [status, fullDate, time];
+  }
+  /**
+   *
+   * @param {Object} post class instance of Post
+   * @param {*} postDiv target div where content will be added to
+   */
+  static displayPosts(post, postDiv) {
+    let singlePost = document.createElement("div");
+    singlePost.classList.add("container", "col-11", "col-xl-10", "my-3");
+    singlePost.innerHTML = post.htmlPost();
+    postDiv.insertAdjacentElement("beforeend", singlePost);
+    //so it only runs on my posts
+    if (post.postData.author.name === localStorage.getItem("username")) {
+      post.addEvent(singlePost);
+    }
   }
 }

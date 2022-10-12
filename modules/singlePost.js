@@ -10,6 +10,12 @@ let id = params.get("id");
 let htmlMain = document.querySelector("main");
 let HTMLusername = document.querySelector("#username");
 let logOutBtn = document.querySelector("#logOut");
+/**
+ * @description does an api call via globalApiCall, displays the content on the page
+ * @param {number} id the id of the post
+ * @param {string} token your auth token
+ * @param {string} user the username of the logged in user
+ */
 async function singlePost(id, token, user) {
   let response = await globalApiCall(
     `social/posts/${id}?_author=true`,
@@ -48,7 +54,9 @@ async function singlePost(id, token, user) {
     htmlMain.insertAdjacentElement("afterbegin", postElement);
   }
 }
-
+/**
+ *@description initiating single page content
+ */
 function initiator() {
   let status = isLoggedIn(token, isLoggedInStatus);
   if (status) {

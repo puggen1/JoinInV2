@@ -27,7 +27,12 @@ function logOut() {
   localStorage.removeItem("isLoggedIn");
   window.location.href = "/feed.html";
 }
-
+/**
+ *
+ * @param {htmlDOM} profileLink a html object in header
+ * @param {*} logOutBtn the logout / login Button
+ * @param {*} alertLocation the target of the not logget in alert
+ */
 function notLoggedIn(profileLink, logOutBtn, alertLocation) {
   let alert = createAlert("notLoggedIn", alertLocation, "beforebegin");
   displayResponse(alert, `<p class="m-0">Not logget in</p>`, true);

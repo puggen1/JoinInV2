@@ -1,8 +1,9 @@
 import Post from "./Post.mjs";
 import globalApiCall from "./globalApiCall.mjs";
 let allPosts = "social/posts?_author=true&_comments=true&_reactions=true";
-import { createAlert, displayResponse } from "./responses.mjs";
+import { isLoggedIn, logOutInitiate, notLoggedIn } from "./logInOut.mjs";
 import { filterPosts, sortPosts, search } from "./filterAndSort.mjs";
+
 let authToken = localStorage.getItem("token");
 let userName = localStorage.getItem("username");
 let isLoggedInStatus = localStorage.getItem("isLoggedIn");
@@ -22,34 +23,17 @@ let postForm = document.querySelector("#newPost");
 postForm.addEventListener("submit", () => {
   Post.createPost(event, imgLink);
 });
-//double validation for is logged in so token must be used as well
-function isLoggedIn() {
-  if (authToken && isLoggedInStatus) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function logOut() {
-  localStorage.removeItem("token");
-  localStorage.setItem("isLoggenIn", false);
-  window.location.href = "/feed.html";
-}
 
 function feedInitiator() {
-  let status = isLoggedIn();
+  //double validation for is logged in so token must be used as well
+  let status = isLoggedIn(authToken, isLoggedInStatus);
   if (status) {
     profileLink.innerHTML = userName;
-    logOutBtn.addEventListener("click", logOut);
+    logOutInitiate(logOutBtn);
     welcome.innerHTML = `Welcome <b>${userName}</b> here is whats new:`;
     showFeed();
   } else {
-    let alert = createAlert("notLoggedIn", "h1", "beforebegin");
-    displayResponse(alert, `<p class="m-0">Not logget in</p>`, true);
-    logOutBtn.innerHTML = "Log in";
-    profileLink.innerHTML = "";
-    logOutBtn.setAttribute("href", "./index.html");
+    notLoggedIn(profileLink, logOutBtn, "h1");
   }
 }
 feedInitiator();

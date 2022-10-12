@@ -18,10 +18,14 @@ export default class Post {
   /**
    * @description used to show either only link to single post, or if it is your post, options like delete and update.
    * @param {string} localUsername username stored in localstorage
+   * @param {boolean} singlePage this determines if the post is for single page or feed
    * @returns string with html of buttons
    */
-  customButtons(localUsername) {
-    let buttons = `<a type="button" href="./post?id=${this.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>`;
+  customButtons(localUsername, singlePage = false) {
+    let buttons = "";
+    if (!singlePage) {
+      buttons = `<a type="button" href="./post.html?id=${this.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>`;
+    }
     //i dont know how to do this yet
     //this.postData.author.name === localUsername
     if (this.postData.author.name === localUsername) {
@@ -59,7 +63,9 @@ export default class Post {
                     <p class="card-text col-10">
                     ${body}
                        </p>
-                    <div class="d-flex mt-3 justify-content-between align-items-center flex-wrap">
+
+                    <div class="d-flex mt-3 justify-content-between flex-wrap ">
+
                     ${buttons}
                     <div class="d-flex justify-content-end ">
                         <p class="m-2">${status} ${time}</p>
@@ -95,6 +101,7 @@ export default class Post {
     if (post.author.avatar) {
       img = post.author.avatar;
     }
+
     let avatar = `<img src="${img}" class="rounded-circle img-fluid col-1">`;
     let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <a href="./profile.html?username=${post.author.name}"class="mb-0 link-dark"><b class="me-1">${post.author.name}</a></b>Says:</div>`;
     return userDiv;

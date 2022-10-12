@@ -42,13 +42,11 @@ function sortPosts(event, posts) {
       let postAUpdate = new Date(postA.postData.updated);
       let postBUpdate = new Date(postB.postData.updated);
       if (postAUpdate > postBUpdate) {
-        console.log("A");
+
         return -1;
       } else if (postAUpdate < postBUpdate) {
-        console.log("B");
         return 1;
       } else {
-        console.log("?");
         return 0;
       }
     });
@@ -58,13 +56,11 @@ function sortPosts(event, posts) {
       let postAUpdate = new Date(postA.postData.updated);
       let postBUpdate = new Date(postB.postData.updated);
       if (postAUpdate < postBUpdate) {
-        console.log("B");
         return -1;
       } else if (postAUpdate > postBUpdate) {
-        console.log("A");
         return 1;
       } else {
-        console.log("?");
+
         return 0;
       }
     });

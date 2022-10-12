@@ -21,7 +21,7 @@ export default class Post {
    * @returns string with html of buttons
    */
   customButtons(localUsername) {
-    let buttons = `<a type="button" href="./post?id=${this.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>`;
+    let buttons = `<a type="button" href="./post.html?id=${this.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>`;
     //i dont know how to do this yet
     //this.postData.author.name === localUsername
     if (this.postData.author.name === localUsername) {
@@ -59,9 +59,9 @@ export default class Post {
                     <p class="card-text col-10">
                     ${body}
                        </p>
-                    <div class="d-flex mt-3 justify-content-between ">
+                    <div class="d-flex mt-3 justify-content-between flex-wrap ">
                     ${buttons}
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end ">
                         <p class="m-2">${status} ${time}</p>
                         <p class="m-2 ms-0">${date}</p>
                     </div>

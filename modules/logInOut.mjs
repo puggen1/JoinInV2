@@ -25,6 +25,7 @@ function logOutInitiate(logOutBtn) {
 function logOut() {
   localStorage.removeItem("token");
   localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("username");
   window.location.href = "/feed.html";
 }
 /**

@@ -16,13 +16,18 @@ let modalText = document.querySelector("#modalText");
 let modalImage = document.querySelector("#profilePicture img");
 let posts = document.querySelector("#posts");
 let allContent = document.querySelector("#allContent");
+let middlePart = document.querySelector("#allPosts");
+let newPost = document.querySelector("#newPost");
+let newButton = document.querySelector("#newButton");
+let imgLink = document.querySelector("#imgLink");
+newPost.addEventListener("submit", () => {
+  Post.createPost(event, imgLink);
+});
 
-let createPostLarge = document.querySelector("#newPostLarge");
-let allPosts = document.querySelector("#AllPosts");
 async function initiateProfile() {
   let url = "social/profiles/";
   let myself;
-  if (user) {
+  if (user && user !== localUser) {
     url += user;
     myself = false;
   } else {
@@ -38,7 +43,8 @@ async function initiateProfile() {
   } else {
     middlePart.classList.add("order-3", "order-md-4", "order-xl-2");
     middlePart.classList.remove("order-4", "order-xl-5");
-    createPostLarge.remove();
+    newPost.remove();
+    newButton.remove();
     allContent.classList.add("align-items-start");
   }
   Profileheader.innerHTML = response.name;
@@ -81,3 +87,6 @@ async function initiateProfile() {
 if (isLoggedIn(authToken, status)) {
   initiateProfile();
 }
+
+let logOutBtn = document.querySelector("#logOut");
+logOutInitiate(logOutBtn);

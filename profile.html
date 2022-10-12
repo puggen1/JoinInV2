@@ -23,7 +23,7 @@
                           </button>
                       <a class="navbar-brand display-1 fs-1 m-0 text-center col-6 order-lg-2 col-lg-2" href="feed.html">Join In</a>
                       <div class="order-lg-3 col-auto m-0 col-lg-5 d-flex justify-content-end">
-                        <a class=" navbar-brand display-2 text-center" href="#" data-bs-toggle="collapse" aria-expanded="false" aria-controls="newPostLarge" data-bs-target="#newPostLarge">Post +</a>
+                        <a class=" navbar-brand display-2 text-center" href="#" data-bs-toggle="collapse" aria-expanded="false" aria-controls="newPost" data-bs-target="#newPost">Post +</a>
                       </div>
                       <div class="collapse navbar-collapse order-lg-1 col-lg-5 justify-content-md-center justify-content-lg-start" id="navbar">
                         <ul class="navbar-nav col-md-6">
@@ -31,7 +31,7 @@
                             <a class="nav-link text-dark active" aria-current="page" href="#">Profile</a>
                           </li>
                           <li class="nav-item col-md-auto ms-lg-3">
-                            <a class="nav-link text-dark" aria-current="page" href="index.html">(Log out)</a>
+                            <a id="logOut" class="nav-link text-dark" aria-current="page" href="index.html">(Log out)</a>
                           </li>
                        
                       </div>
@@ -47,17 +47,19 @@
                 <img id="roundProfilePicture"class=" rounded-circle col-6 col-sm-4 col-md-3 col-xl-12 p-xl-4"src="./assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" data-bs-toggle="modal" data-bs-target="#profilePicture" alt="the users's profile picture">
             </div>
          
-            <form action="#" id="newPostLarge" class="collapse d-xl-flex order-3 order-md-4 order-xl-2 d-xl-flex col-12 col-sm-10 col-md-7 col-lg-7 col-xl-6 p-4 m-2 mt-0 pt-0 mb-4 pb-0 row align-items-xl-center">
+            <form action="#" id="newPost" class="collapse d-xl-flex order-3 order-md-4 order-xl-2 d-xl-flex col-12 col-sm-10 col-md-7 col-lg-7 col-xl-6 p-4 m-2 mt-0 pt-0 mb-4 pb-0 row align-items-xl-center">
                 <p class="display-6">Write post here</p>
+                 <input type="text" id="newPostTitle" class="form-control mb-1" placeholder="title">
                 <textarea class="form-control mh-50 h-50 "name="newPost" maxlength="400" id="newPostProfile" placeholder="Write new Update/post here" cols="50" rows="7" ></textarea>
-                <button class="btn btn-primary m-2 ms-0 col-auto" type="button">+ Add Image</button><button class="btn btn-success m-2 col-auto">Post</button>
+                <button class="btn btn-primary m-2 ms-0 col-auto" type="button" data-bs-toggle="modal" data-bs-target="#addPictureModal">+ Add Image</button>
+                <button type="submit" class="btn btn-success m-2 col-auto">Post</button>
             </form>
             <div id="allPosts"class="col-12 col-sm-10 order-4 order-md-4 order-xl-5 col-lg-7 col-xl-6 mt-lg-4  mb-md-4 mt-md-4">
                 <div class="row align-items-center mb-3">
                     <h2 id="postHeader" class=" col-6 col-xl-12 text-xl-center my-0">Posts</h2>
-                    <div class="container col-6 row align-items-center justify-content-end  d-xl-none">
+                    <div  id="newButton" class="container col-6 row align-items-center justify-content-end  d-xl-none">
                         <label class=" fs-4 ms-3 me-0 col-auto" for="newUpdate">New</label>
-                    <button id="newUpdate"type="button" class="col-auto btn btn-primary p-2 rounded-circle" data-bs-toggle="collapse" aria-expanded="false" aria-controls="newPostLarge" data-bs-target="#newPostLarge">
+                    <button id="newUpdate"type="button" class="col-auto btn btn-primary p-2 rounded-circle" data-bs-toggle="collapse" aria-expanded="false" aria-controls="newPost" data-bs-target="#newPost">
                         <i class="bi bi-plus  d-flex align-top align-content-center justify-content-center fs-2"></i>
                         </button>
                       
@@ -97,7 +99,27 @@
             </div>
           </div>
           </div>
+          <div class="modal fade" id="addPictureModal" tabindex="-1" aria-labelledby="addPictureModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addPictureModalLabel">Add image link here:</h1>
+
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="text" id="imgLink" class="form-control" placeholder="link here....">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">add link</button>
+          </div>
+        </div>
+      </div>
+    </div>
     </main>
+    
     <footer class="m-0 mt-auto bg-warning row justify-content-center">
         <div class="row col-12 col-lg-8  p-2 m-0 justify-content-around align-items-center pt-4">
             <div class="col-4 row">

@@ -25,7 +25,7 @@
         <a class="navbar-brand display-1 fs-1 m-0 text-center col-6 order-lg-2 col-lg-2 col-lg-2" href="#">Join In</a>
         <div class="order-lg-3 col-auto m-0 col-lg-5 d-flex   justify-content-end"> <a
             class=" navbar-brand display-2 text-center d-lg-none " href="#" data-bs-toggle="collapse" aria-expanded="false"
-            aria-controls="newPostSmall" data-bs-target="#newPostSmall">Post +</a></div>
+            aria-controls="newPost" data-bs-target="#newPost">Post +</a></div>
 
         <div class="collapse navbar-collapse order-lg-1 col-lg-5 col-xl-4 justify-content-md-center" id="navbar">
           <ul class="navbar-nav col-md-6 col-lg-12">
@@ -50,13 +50,13 @@
       <h1 id="welcomeMessage" class="display-5 col-10 col-lg-12 text-center mt-3">
       </h1>
       <div class="container row m-0 p-0 col-xl-9 col-xxl-8">
-        <div class="container row col-12 d-lg-none justify-content-end">
+        <div class="container row col-12 col-sm-11 m-auto d-lg-none justify-content-end">
           <button class="btn rounded-circle float-end p-2 m-2 bg-primary col-auto" data-bs-toggle="collapse"
-            aria-expanded="false" aria-controls="newPostSmall" data-bs-target="#newPostSmall" type="button"><i
+            aria-expanded="false" aria-controls="newPost" data-bs-target="#newPost" type="button"><i
               class="bi bi-plus d-flex align-top align-content-center justify-content-center text-light fs-1"></i></button>
         </div>
-        <div class="container mt-lg-4 col-11 col-xl-10 gy-3">
-          <form class="collapse mb-4  d-lg-block" id="newPost">
+        <div class=" mt-lg-4 mx-0 px-0 ">
+          <form class="collapse mb-3 container col-11 col-xl-10 d-lg-block" id="newPost">
             <p class="display-6">Write post here</p>
             <input type="text" id="newPostTitle" class="form-control mb-1" placeholder="title">
             <textarea class="form-control mh-50 h-50 " name="newPost" maxlength="400" id="newPostProfile"
@@ -65,7 +65,29 @@
               type="button">+ Add Image</button><button class="btn btn-success m-2 col-auto">Post</button>
           </form>
         </div>
-       
+        <section class=" m-0 p-0" id="filter">
+          <div class="container border-lg-top pt-lg-4 col-11 col-xl-10 d-flex flex-wrap">
+          <div id="preMade" class="col-12  d-flex mb-3 flex-wrap justify-content-sm-center justify-content-lg-start">
+              <div class=" col-12 col-sm-6  d-sm-flex d-xl-block justify-content-sm-center col-xl-2 mb-1"><button class="btn btn-primary col-12 col-sm-8 col-lg-10 " id="all" >all</button></div>
+              <div class="col-12 col-sm-6 d-sm-flex d-xl-block justify-content-sm-center col-xl-2 mb-1"><button class="btn btn-primary col-12 col-sm-8 col-lg-10 " id="media">media</button></div>
+              <div class="col-12 col-sm-6 d-sm-flex d-xl-block justify-content-sm-center col-xl-2 mb-1"><button class="btn btn-primary  col-12 col-sm-8 col-lg-10 " id="today">today</button></div>
+              <div class="col-12 col-sm-6 d-sm-flex d-xl-block justify-content-sm-center col-xl-2 mb-1"><button class="btn btn-primary  col-12 col-sm-8 col-lg-10 " id="mine" >mine</button></div>
+          </div>
+      
+        <div class="dropdown my-1 col-5 col-lg-2  me-lg-0 me-xl-2">
+          <button class="btn btn-secondary  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Sort by
+          </button>
+          <ul id="sortOptions" class="dropdown-menu">
+            <li><button class="dropdown-item" id="new" >newest</button></li>
+            <li><button class="dropdown-item" id="old" >Oldest</button></li>
+          </ul>
+        </div>
+        <div id="search" class="my-1 col-7 col-lg-4 col-xl-5">
+          <input type="search" class="form-control " placeholder="search by title">
+        </div>
+        </div>
+       </section>
         <div class="p-0 " id="posts">
 
         </div>

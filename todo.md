@@ -1,12 +1,6 @@
 # things i need to do on feed
 
-## update feature
-
-## add responses if error or success?
-
 ## either change or fix add link modal
-
-## post time need to be right
 
 ## small visual fixes
 
@@ -14,11 +8,7 @@
 
 ## profile picture on top left, (profile link)
 
-## fix the div where posts are inside.
-
-## create post
-
-## filter and sort
+## fix alignment
 
 ## search
 

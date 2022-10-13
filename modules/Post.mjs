@@ -250,22 +250,24 @@ export default class Post {
       contentArr.forEach((ele) => {
         changeTypeAndColor(ele, "border", "");
       });
-      displayResponse(alert, `<p class="m-0">Post created</p>`, true);
       changeTypeAndColor(alert, "alert", "success");
+      displayResponse(alert, `<p class="m-0">Post created</p>`, true);
     } else {
       contentArr.forEach((ele) => {
         if (!ele.value) {
           changeTypeAndColor(ele, "border", "danger");
         }
       });
+      changeTypeAndColor(alert, "alert", "danger");
       displayResponse(
         alert,
         `<p class="m-0">title and body is required</p>`,
         true
       );
-      changeTypeAndColor(alert, "alert", "danger");
     }
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1500);
   }
   /**
    *

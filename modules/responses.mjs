@@ -95,7 +95,6 @@ function createAlert(id, target, posistion, size = "col-7") {
     "mt-3",
     size,
     "alert",
-    "alert-danger",
     "alert-dismissable",
     "justify-content-between",
     "d-flex"

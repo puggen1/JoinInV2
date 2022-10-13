@@ -19,16 +19,23 @@ export default class Post {
    * @description used to show either only link to single post, or if it is your post, options like delete and update.
    * @param {string} localUsername username stored in localstorage
    * @param {boolean} singlePage this determines if the post is for single page or feed
+   * @param {boolean} profile if this is true, it will get the username from another location, since getting post from profile shows name diffrently
    * @returns string with html of buttons
    */
-  customButtons(localUsername, singlePage = false) {
+  customButtons(localUsername, singlePage = false, profile = false) {
     let buttons = "";
     if (!singlePage) {
       buttons = `<a type="button" href="./post.html?id=${this.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>`;
     }
+    let postUser = "";
+    if (profile) {
+      postUser = this.postData.owner;
+    } else {
+      postUser = this.postData.author.name;
+    }
     //i dont know how to do this yet
-    //this.postData.author.name === localUsername
-    if (this.postData.author.name === localUsername) {
+    //since there is diffrent ways of getting author
+    if (postUser === localUsername) {
       buttons += `<div class="dropdown">
       <button class="btn dropdown-toggle btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">options</button>
       <ul class="dropdown-menu">
@@ -86,7 +93,7 @@ export default class Post {
     let img = "";
 
     if (post.media) {
-      img = `<img src="${post.media}" class="img-fluid" alt="test alt">`;
+      img = `<img src="${post.media}" class="postImage img-fluid" alt="test alt">`;
     }
     return img;
   }
@@ -107,13 +114,20 @@ export default class Post {
     return userDiv;
   }
   //can be changed to non static if i send id with it
-  async showUpdatePostModal() {
+  async showUpdatePostModal(event, oldVal) {
     //this works but is not what i expected
-    let id = this.getAttribute("data-id");
+    let id = event.target.getAttribute("data-id");
     let update = bootstrap.Modal.getOrCreateInstance("#updatePost");
     update.show();
     let updateform = document.querySelector("#updatePostForm");
-    updateform.addEventListener("submit", () => {
+    console.log(updateform);
+    //for adding prev valued:
+    let fields = updateform.querySelectorAll("input");
+    fields.forEach((field, index) => {
+      console.log(field, oldVal[index]);
+      field.value = oldVal[index];
+    });
+    updateform.addEventListener("submit", (event) => {
       Post.updatePost(event, id, update);
     });
   }
@@ -137,12 +151,23 @@ export default class Post {
       htmlArr.forEach((input) => {
         changeColor(input, true);
       });
-      modal.hide();
       for (let input of e.target) {
         input.value = "";
         changeTypeAndColor(input, "border");
-        window.location.reload();
       }
+      let alert = createAlert(
+        "updateSuccess",
+        "#updatePostForm .modal-footer",
+        "afterBegin",
+        "col-3"
+      );
+      changeTypeAndColor(alert, "alert", "success");
+      displayResponse(alert, "updated");
+
+      setTimeout(() => {
+        modal.hide();
+        window.location.reload();
+      }, 1500);
     } else {
       htmlArr.forEach((input) => {
         if (!input.value) {
@@ -156,14 +181,19 @@ export default class Post {
   /**
    * @description takes id from an button, deletes the post with that id
    */
-  async deletePost() {
-    let id = this.getAttribute("data-id");
+  async deletePost(event, redirect) {
+    let id = event.target.getAttribute("data-id");
     let token = localStorage.getItem("token");
     if (confirm("Delete this post?")) {
       let response = await globalApiCall(`social/posts/${id}`, token, "DELETE");
-      window.location.reload();
-    } else {
-      console.log("cancelled");
+
+      setTimeout(() => {
+        if (redirect) {
+          window.location.href = "feed.html";
+        } else {
+          window.location.reload();
+        }
+      }, 1500);
     }
   }
   /**
@@ -171,11 +201,26 @@ export default class Post {
    * @param {htmlDOM} singlePost a html post, that the user created, with the update and delete buttons
    *
    */
-  addEvent(singlePost) {
+  addEvent(singlePost, redirect = false) {
     let postActions = singlePost.querySelectorAll(".postAction");
+    let postTitle = singlePost.querySelector("h3");
+    let postBody = singlePost.querySelector("p");
+    let postImage = singlePost.querySelector(".postImage");
+    let oldValues = [
+      postTitle
+        ? postTitle.innerHTML
+        : singlePost.querySelector("h1").innerHTML,
+      postBody.innerHTML.trim(),
+      postImage ? postImage.src : "",
+      ,
+    ];
     if (postActions.length > 0) {
-      postActions[0].addEventListener("click", this.showUpdatePostModal);
-      postActions[1].addEventListener("click", this.deletePost);
+      postActions[0].addEventListener("click", (e) => {
+        this.showUpdatePostModal(e, oldValues);
+      });
+      postActions[1].addEventListener("click", (e) => {
+        this.deletePost(e, redirect);
+      });
     }
   }
   /**

@@ -81,17 +81,19 @@ function displayResponse(htmlElement, message, dismissable = false) {
  * @param {string} id wanted id for the element you are creating... might be removied later
  * @param {string} target id of target you want to place the new element around or inside
  * @param {string} posistion the possistion of the new element according to the target
+ * @param {string} size the col size of the alert, standart is col-7
  * @returns the created alert element, do be used further
  * @example ```js
- * let alert = createAlert("createPost", "#postForm", "beforeend")
+ * let alert = createAlert("createPost", "#postForm", "beforeend", "col-12")
  * ```
  */
-function createAlert(id, target, posistion) {
+function createAlert(id, target, posistion, size = "col-7") {
   let targetedHtmlElement = document.querySelector(target);
+  console.log(targetedHtmlElement);
   let alert = document.createElement("div");
   alert.classList.add(
     "mt-3",
-    "col-7",
+    size,
     "alert",
     "alert-danger",
     "alert-dismissable",

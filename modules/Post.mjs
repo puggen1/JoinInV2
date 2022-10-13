@@ -167,7 +167,7 @@ export default class Post {
       setTimeout(() => {
         modal.hide();
         window.location.reload();
-      }, 1500);
+      }, 1000);
     } else {
       htmlArr.forEach((input) => {
         if (!input.value) {
@@ -193,7 +193,7 @@ export default class Post {
         } else {
           window.location.reload();
         }
-      }, 1500);
+      }, 1000);
     }
   }
   /**
@@ -267,7 +267,7 @@ export default class Post {
     }
     setTimeout(() => {
       window.location.reload();
-    }, 1500);
+    }, 1000);
   }
   /**
    *

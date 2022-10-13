@@ -56,13 +56,23 @@ async function initiateProfile() {
     for (let post of response.posts) {
       let singlePost = new Post(post);
       let picture = Post.postPicture(singlePost.postData);
-
+      let buttons = singlePost.customButtons(localUser, false, true);
       let {
         title = singlePost.postData.title,
         body = singlePost.postData.body,
       } = post;
       let dates = singlePost.time();
-      posts.innerHTML += `<div class="card px-xl-4 my-2 mx-sm-3 col-12 my-2">
+      //similar to post class's display post, might merge them later
+      let postDiv = document.createElement("div");
+      postDiv.classList.add(
+        "card",
+        "px-xl-4",
+        "my-2",
+        "mx-sm-3",
+        "col-12",
+        "my-2"
+      );
+      postDiv.innerHTML = `
       <div class="card-body">
       <h3 class="fs-5">${title}</h3>
         ${picture}
@@ -71,14 +81,17 @@ async function initiateProfile() {
              </p>
 
           <div class="d-flex mt-3 justify-content-between flex-wrap ">
-          <a type="button" href="./post.html?id=${singlePost.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>
+          ${buttons}
           <div class="d-flex justify-content-end ">
               <p class="m-2">${dates[0]} ${dates[1]}</p>
               <p class="m-2 ms-0">${dates[2]}</p>
           </div>
       </div>
-  </div>
-</div>`;
+      </div>`;
+      if (myself) {
+        singlePost.addEvent(postDiv);
+      }
+      middlePart.insertAdjacentElement("beforeend", postDiv);
     }
   }
 }

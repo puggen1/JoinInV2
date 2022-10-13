@@ -58,7 +58,8 @@ async function singlePost(id, token, user) {
       "mb-4"
     );
     postElement.innerHTML = `${postContent}<div class="d-flex mt-4 justify-content-center"><a class="btn btn-primary" href="feed.html">Back</a></div>`;
-    post.addEvent(postElement);
+    console.log(postElement);
+    post.addEvent(postElement, true);
     htmlMain.insertAdjacentElement("afterbegin", postElement);
   }
 }

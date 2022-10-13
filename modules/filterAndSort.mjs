@@ -1,4 +1,10 @@
 import Post from "./Post.mjs";
+/**
+ *
+ * @param {*} event a button with an id
+ * @param {*} posts all posts
+ * @returns an filtered list of posts determined by what button was pressed
+ */
 function filterPosts(event, posts) {
   let filteredPosts = {};
   let keyword = event.target.id;
@@ -13,11 +19,21 @@ function filterPosts(event, posts) {
   }
   return filteredPosts;
 }
+/**
+ *
+ * @param {*} post
+ * @returns post if it has an image
+ */
 function filterMedia(post) {
   if (post.postData.media) {
     return true;
   }
 }
+/**
+ *
+ * @param {*} post
+ * @returns post if it is from today
+ */
 function filterTodaysPosts(post) {
   let postDate = post.postData.created;
   let formatedPostDate = new Date(postDate);
@@ -26,13 +42,23 @@ function filterTodaysPosts(post) {
     return true;
   }
 }
+/**
+ *
+ * @param {*} post
+ * @returns returns all posts if they match your username
+ */
 function filterMyPosts(post) {
   let username = localStorage.getItem("username");
   if (post.postData.author.name === username) {
     return true;
   }
 }
-
+/**
+ *
+ * @param {*} event targeted element(sort buttons)
+ * @param {*} posts all posts
+ * @returns all the post sorted either new first or oldest first
+ */
 function sortPosts(event, posts) {
   let sortType = event.target.id;
   let sortedPosts = [];
@@ -42,7 +68,6 @@ function sortPosts(event, posts) {
       let postAUpdate = new Date(postA.postData.updated);
       let postBUpdate = new Date(postB.postData.updated);
       if (postAUpdate > postBUpdate) {
-
         return -1;
       } else if (postAUpdate < postBUpdate) {
         return 1;
@@ -60,19 +85,33 @@ function sortPosts(event, posts) {
       } else if (postAUpdate > postBUpdate) {
         return 1;
       } else {
-
         return 0;
       }
     });
   }
   return sortedPosts;
 }
+/**
+ *
+ * @param {string} input input value of an search field
+ * @param {object} posts an post object
+ * @returns a filtered list
+ */
 function search(input, posts) {
   return posts.filter(searchFilter, input);
 }
+/**
+ *
+ * @param {object} post a post object, that needs a title
+ * @returns {boolean} if the title match this(input value)
+ */
 function searchFilter(post) {
-  if (post.postData.title.toLowerCase().includes(this.toLowerCase())) {
+  //both of this works, but i feel this is more accurate
+  if (post.postData.title.toUpperCase().indexOf(this.toUpperCase()) > -1) {
     return true;
   }
+  /*if (post.postData.title.toLowerCase().includes(this.toLowerCase())) {
+    return true;
+  }*/
 }
 export { filterPosts, sortPosts, search };

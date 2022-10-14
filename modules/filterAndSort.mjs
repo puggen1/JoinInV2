@@ -106,12 +106,17 @@ function search(input, posts) {
  * @returns {boolean} if the title match this(input value)
  */
 function searchFilter(post) {
-  //both of this works, but i feel this is more accurate
-  if (post.postData.title.toUpperCase().indexOf(this.toUpperCase()) > -1) {
+  let {title = post.postData.title,author =post.postData.author.name, text = post.postData.body} = post
+  let string = this.toUpperCase()
+  if (title.toUpperCase().indexOf(string) > -1) {
     return true;
   }
-  /*if (post.postData.title.toLowerCase().includes(this.toLowerCase())) {
-    return true;
-  }*/
+  if(author.toUpperCase().indexOf(string) > -1){
+    return true
+  }
+  if(text.toUpperCase().indexOf(string) > -1){
+    return true
+  }
+
 }
 export { filterPosts, sortPosts, search };

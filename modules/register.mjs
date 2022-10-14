@@ -39,6 +39,9 @@ export default async function registerUser(event) {
     } else {
       changeTypeAndColor(registerResponse, "alert", "success");
       responseMessage = "Account created";
+      inputName.value = "";
+      inputEmail.value = "";
+      inputPassword.value = "";
     }
     //do something with response
     // if response is error, display error and change green input fielt to red
@@ -49,4 +52,5 @@ export default async function registerUser(event) {
     );
     hiddenToggler(registerResponse, false);
   }
+  
 }

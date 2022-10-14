@@ -3,6 +3,14 @@
   display: none;
 }
 
+h1, .h1, h2, .h2, h3, .h3 {
+  font-family: "Montserrat", sans-serif;
+}
+
+p, a {
+  font-family: "Open Sans", sans-serif;
+}
+
 /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

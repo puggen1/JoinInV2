@@ -6,4 +6,12 @@ $primary : #1476B3;
     display: none;
 }
 
+h1, h2,h3{
+    font-family: 'Montserrat', sans-serif;
+
+}
+p,a{
+    font-family: 'Open Sans', sans-serif;
+
+}
 @import"../node_modules/bootstrap/scss/bootstrap.scss";

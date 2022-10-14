@@ -25,7 +25,7 @@ export default class Post {
   customButtons(localUsername, singlePage = false, profile = false) {
     let buttons = "";
     if (!singlePage) {
-      buttons = `<a type="button" href="./post.html?id=${this.postData.id}" class="btn btn-outline-dark col-3 m-0 px-0">View </a>`;
+      buttons = `<a type="button" href="./post.html?id=${this.postData.id}" class="btn btn-outline-primary col-3 m-0 px-0">View </a>`;
     }
     let postUser = "";
     if (profile) {
@@ -62,7 +62,7 @@ export default class Post {
     let { title, body /*updated*/ } = this.postData;
     //<div class="container col-11 col-xl-10 gy-3"></div>
     let html = `
-    <div class="card px-xl-4">
+    <div class="card px-xl-4 shadow">
                 <div class="card-body">
                 ${profile}
                 <h3 class="">${title}</h3>

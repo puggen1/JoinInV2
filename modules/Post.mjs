@@ -108,7 +108,7 @@ export default class Post {
       img = post.author.avatar;
     }
 
-    let avatar = `<div><img src="${img}" class="rounded-circle img-fluid col-1">`;
+    let avatar = `<div class="col-1 profileImage ratio"><img src="${img}" class="rounded-circle img-fluid "></div>`;
     let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <a href="./profile.html?username=${post.author.name}"class="mb-0 ms-1 link-dark"><b class="me-1">${post.author.name}</a></b>Says:</div>`;
     return userDiv;
   }

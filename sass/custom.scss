@@ -14,10 +14,16 @@ p,a{
     font-family: 'Open Sans', sans-serif;
 
 }
+/*inspiration from https://stackoverflow.com/questions/70662496/how-will-i-make-perfect-circle-image-using-card-in-bootstrap-5
+with some extra fixes since boostrap ratio makes things big..*/
 .profileImage{
+    position: relative;
+    --bs-aspect-ratio: 100%;
+    overflow: hidden;
+    width: 8.3333333% !important;
+}
+.profileImage img{
     object-fit: cover;
     object-position: center;
-    max-height: 100%;
-    width: auto;
 }
 @import"../node_modules/bootstrap/scss/bootstrap.scss";

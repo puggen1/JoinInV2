@@ -62,23 +62,22 @@ export default class Post {
     let { title, body /*updated*/ } = this.postData;
     //<div class="container col-11 col-xl-10 gy-3"></div>
     let html = `
-    <div class="card px-xl-4 shadow">
+    <div class="card shadow">
                 <div class="card-body">
-                ${profile}
-                <h3 class="">${title}</h3>
+                  ${profile}
+                  <h3 class="">${title}</h3>
                   ${picture}
-                    <p class="card-text col-10">
+                  <p class="card-text col-10">
                     ${body}
-                       </p>
-
-                    <div class="d-flex mt-3 justify-content-between flex-wrap ">
-
+                  </p>
+                </div>
+                    <div class="d-flex mt-3 justify-content-between flex-wrap card-footer">
+                    
                     ${buttons}
                     <div class="d-flex justify-content-end ">
                         <p class="m-2">${status} ${time}</p>
                         <p class="m-2 ms-0">${date}</p>
                     </div>
-                </div>
             </div>
 </div>
 `;
@@ -93,7 +92,7 @@ export default class Post {
     let img = "";
 
     if (post.media) {
-      img = `<img src="${post.media}" class="postImage img-fluid" alt="test alt">`;
+      img = `<img src="${post.media}" class="postImage img-fluid rounded-1" alt="test alt">`;
     }
     return img;
   }
@@ -109,8 +108,8 @@ export default class Post {
       img = post.author.avatar;
     }
 
-    let avatar = `<img src="${img}" class="rounded-circle img-fluid col-1">`;
-    let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <a href="./profile.html?username=${post.author.name}"class="mb-0 link-dark"><b class="me-1">${post.author.name}</a></b>Says:</div>`;
+    let avatar = `<div><img src="${img}" class="rounded-circle img-fluid col-1">`;
+    let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <a href="./profile.html?username=${post.author.name}"class="mb-0 ms-1 link-dark"><b class="me-1">${post.author.name}</a></b>Says:</div>`;
     return userDiv;
   }
   //can be changed to non static if i send id with it

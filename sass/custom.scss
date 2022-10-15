@@ -14,4 +14,10 @@ p,a{
     font-family: 'Open Sans', sans-serif;
 
 }
+.profileImage{
+    object-fit: cover;
+    object-position: center;
+    max-height: 100%;
+    width: auto;
+}
 @import"../node_modules/bootstrap/scss/bootstrap.scss";

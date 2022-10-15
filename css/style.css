@@ -11,6 +11,13 @@ p, a {
   font-family: "Open Sans", sans-serif;
 }
 
+.profileImage {
+  object-fit: cover;
+  object-position: center;
+  max-height: 100%;
+  width: auto;
+}
+
 /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

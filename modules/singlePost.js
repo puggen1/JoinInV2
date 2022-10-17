@@ -31,7 +31,6 @@ async function singlePost(id, token, user) {
     let media = Post.postPicture(post.postData);
     let postProfile = Post.postProfile(post.postData);
     let date = post.time();
-    console.log(date);
     let postContent = `
     <div class="card-body">    
     ${postProfile}
@@ -63,7 +62,6 @@ async function singlePost(id, token, user) {
       "card"
     );
     postElement.innerHTML = postContent;
-    console.log(postElement);
     post.addEvent(postElement, true);
     htmlMain.insertAdjacentElement("afterbegin", postElement);
   }

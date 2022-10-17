@@ -63,7 +63,6 @@ function sortPosts(event, posts) {
   let sortType = event.target.id;
   let sortedPosts = [];
   if (sortType === "new") {
-    console.log("should sort as newest first");
     sortedPosts = posts.sort((postA, postB) => {
       let postAUpdate = new Date(postA.postData.updated);
       let postBUpdate = new Date(postB.postData.updated);
@@ -76,7 +75,6 @@ function sortPosts(event, posts) {
       }
     });
   } else {
-    console.log("should be sorted as old first");
     sortedPosts = posts.sort((postA, postB) => {
       let postAUpdate = new Date(postA.postData.updated);
       let postBUpdate = new Date(postB.postData.updated);
@@ -106,17 +104,20 @@ function search(input, posts) {
  * @returns {boolean} if the title match this(input value)
  */
 function searchFilter(post) {
-  let {title = post.postData.title,author =post.postData.author.name, text = post.postData.body} = post
-  let string = this.toUpperCase()
+  let {
+    title = post.postData.title,
+    author = post.postData.author.name,
+    text = post.postData.body,
+  } = post;
+  let string = this.toUpperCase();
   if (title.toUpperCase().indexOf(string) > -1) {
     return true;
   }
-  if(author.toUpperCase().indexOf(string) > -1){
-    return true
+  if (author.toUpperCase().indexOf(string) > -1) {
+    return true;
   }
-  if(text.toUpperCase().indexOf(string) > -1){
-    return true
+  if (text.toUpperCase().indexOf(string) > -1) {
+    return true;
   }
-
 }
 export { filterPosts, sortPosts, search };

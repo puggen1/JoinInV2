@@ -119,11 +119,9 @@ export default class Post {
     let update = bootstrap.Modal.getOrCreateInstance("#updatePost");
     update.show();
     let updateform = document.querySelector("#updatePostForm");
-    console.log(updateform);
     //for adding prev valued:
     let fields = updateform.querySelectorAll("input");
     fields.forEach((field, index) => {
-      console.log(field, oldVal[index]);
       field.value = oldVal[index];
     });
     updateform.addEventListener("submit", (event) => {
@@ -295,13 +293,13 @@ export default class Post {
     return [status, fullDate, time];
   }
   /**
-   *
+   * @description takes a post formats it with another method, and places it into the given place(postDiv)
    * @param {Object} post class instance of Post
    * @param {*} postDiv target div where content will be added to
    */
   static displayPosts(post, postDiv) {
     let singlePost = document.createElement("div");
-    singlePost.classList.add("container", "col-11", "col-xl-10", "my-3");
+    singlePost.classList.add("container", "col-11", "col-xl-10", "my-4");
     singlePost.innerHTML = post.htmlPost();
     postDiv.insertAdjacentElement("beforeend", singlePost);
     //so it only runs on my posts

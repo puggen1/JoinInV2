@@ -32,9 +32,9 @@ export default class Post {
    * @returns string with html of buttons
    */
   customButtons(localUsername, singlePage = false, profile = false) {
-    let buttons = "";
+    let buttons = `<div class="col-12 col-sm-6  col-lg-6 col-xl-8 col-xxl-6 d-flex">`;
     if (!singlePage) {
-      buttons = `<a type="button" href="./post.html?id=${this.id}" class="btn btn-primary col-3 m-0 px-0">View </a>`;
+      buttons += `<a type="button" href="./post.html?id=${this.id}" class="btn btn-primary col-3 col-md-6 col-lg-6 m-0 px-0">View </a>`;
     }
     let postUser = "";
     if (profile) {
@@ -45,7 +45,7 @@ export default class Post {
     //i dont know how to do this yet
     //since there is diffrent ways of getting author
     if (postUser === localUsername) {
-      buttons += `<div class="dropdown">
+      buttons += `<div class="dropdown ms-4 col-3 col-lg-6">
       <button class="btn dropdown-toggle btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">options</button>
       <ul class="dropdown-menu">
           <li><button type="button" data-bs-target="#updatePost" data-id="${this.id}" class="btn postAction dropdown-item">update</button></li>
@@ -53,6 +53,7 @@ export default class Post {
       </ul>
   </div>`;
     }
+    buttons += "</div>";
     //
     //
     return buttons;
@@ -95,7 +96,6 @@ export default class Post {
    */
   postPicture() {
     let img = "";
-
     if (this.media) {
       img = `<img src="${this.media}" class="postImage img-fluid rounded-1" alt="test alt">`;
     }
@@ -117,7 +117,6 @@ export default class Post {
     let userDiv = `<div class="d-flex align-items-end mb-3">${avatar} <a href="./profile.html?username=${this.author}"class="mb-0 ms-1 link-dark"><b class="me-1">${this.author}</a></b>Says:</div>`;
     return userDiv;
   }
-  //can be changed to non static if i send id with it
   async showUpdatePostModal(event, oldVal) {
     //this works but is not what i expected
     let id = event.target.getAttribute("data-id");

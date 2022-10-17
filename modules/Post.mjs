@@ -25,7 +25,7 @@ export default class Post {
   customButtons(localUsername, singlePage = false, profile = false) {
     let buttons = "";
     if (!singlePage) {
-      buttons = `<a type="button" href="./post.html?id=${this.postData.id}" class="btn btn-outline-primary col-3 m-0 px-0">View </a>`;
+      buttons = `<a type="button" href="./post.html?id=${this.postData.id}" class="btn btn-primary col-3 m-0 px-0">View </a>`;
     }
     let postUser = "";
     if (profile) {

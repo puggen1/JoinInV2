@@ -64,14 +64,7 @@ async function initiateProfile() {
       let dates = singlePost.time();
       //similar to post class's display post, might merge them later
       let postDiv = document.createElement("div");
-      postDiv.classList.add(
-        "card",
-        "px-xl-4",
-        "my-2",
-        "mx-sm-3",
-        "col-12",
-        "my-2"
-      );
+      postDiv.classList.add("card", "my-2", "mx-sm-3", "col-12", "my-2");
       postDiv.innerHTML = `
       <div class="card-body">
       <h3 class="fs-5"><b>${title}</b></h3>

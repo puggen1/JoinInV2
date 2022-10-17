@@ -18,8 +18,9 @@ let posts = document.querySelector("#posts");
 let allContent = document.querySelector("#allContent");
 let middlePart = document.querySelector("#allPosts");
 let newPost = document.querySelector("#newPost");
-let newButton = document.querySelector("#newButton");
 let imgLink = document.querySelector("#imgLink");
+let profileLink = document.querySelector("#username");
+let logOutBtn = document.querySelector("#logOut");
 newPost.addEventListener("submit", () => {
   Post.createPost(event, imgLink);
 });
@@ -27,6 +28,7 @@ newPost.addEventListener("submit", () => {
 async function initiateProfile() {
   let url = "social/profiles/";
   let myself;
+  //finds out if it is your own profile or not
   if (user && user !== localUser) {
     url += user;
     myself = false;
@@ -43,7 +45,6 @@ async function initiateProfile() {
     middlePart.classList.add("order-3", "order-md-4", "order-xl-2");
     middlePart.classList.remove("order-4", "order-xl-5");
     newPost.remove();
-    newButton.remove();
     allContent.classList.add("align-items-start");
   }
   Profileheader.innerHTML = response.name;
@@ -53,6 +54,7 @@ async function initiateProfile() {
   }
   modalText.innerHTML = `${response.name}'s profile picture`;
   if (response.posts) {
+    posts.innerHTML = "";
     for (let post of response.posts) {
       let singlePost = new Post(post);
       let picture = Post.postPicture(singlePost.postData);
@@ -90,7 +92,7 @@ async function initiateProfile() {
 
 if (isLoggedIn(authToken, status)) {
   initiateProfile();
+} else {
+  notLoggedIn(profileLink, logOutBtn, "#allContent", newPost);
 }
-
-let logOutBtn = document.querySelector("#logOut");
 logOutInitiate(logOutBtn);

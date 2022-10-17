@@ -89,7 +89,6 @@ function displayResponse(htmlElement, message, dismissable = false) {
  */
 function createAlert(id, target, posistion, size = "col-7") {
   let targetedHtmlElement = document.querySelector(target);
-  console.log(targetedHtmlElement);
   let alert = document.createElement("div");
   alert.classList.add(
     "mt-3",

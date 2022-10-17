@@ -1,4 +1,8 @@
-import { changeTypeAndColor, createAlert, displayResponse } from "./responses.mjs";
+import {
+  changeTypeAndColor,
+  createAlert,
+  displayResponse,
+} from "./responses.mjs";
 /**
  *
  * @param {string} authToken the auth token to get access to content
@@ -36,15 +40,22 @@ function logOut() {
  * @param {*} postForm the create post form if it excist
  * @param {*} postFilters the filters for all posts
  */
-function notLoggedIn(profileLink, logOutBtn, alertLocation, postForm = "", postFilters="") {
+function notLoggedIn(
+  profileLink,
+  logOutBtn,
+  alertLocation,
+  postForm = "",
+  postFilters = ""
+) {
   let alert = createAlert("notLoggedIn", alertLocation, "beforebegin");
-  changeTypeAndColor(alert, "alert", "danger")
+  changeTypeAndColor(alert, "alert", "danger");
   displayResponse(alert, `<p class="m-0">Not logget in</p>`, true);
   logOutBtn.innerHTML = "Log in";
   profileLink.remove();
   logOutBtn.setAttribute("href", "./index.html");
-  postForm.classList.replace("d-lg-block","hidden");
-  postFilters.classList.add("hidden");
-  
+  postForm.classList.replace("d-lg-block", "hidden");
+  if (postFilters) {
+    postFilters.classList.add("hidden");
+  }
 }
 export { isLoggedIn, logOutInitiate, notLoggedIn };

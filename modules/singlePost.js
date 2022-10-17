@@ -1,6 +1,13 @@
 import Post from "./Post.mjs";
 import globalApiCall from "./globalApiCall.mjs";
 import { logOutInitiate, isLoggedIn, notLoggedIn } from "./logInOut.mjs";
+import {
+  hiddenToggler,
+  changeColor,
+  displayResponse,
+  changeTypeAndColor,
+  createAlert,
+} from "./responses.mjs";
 let params = new URLSearchParams(window.location.search);
 let token = localStorage.getItem("token");
 let isLoggedInStatus = localStorage.getItem("isLoggedIn");
@@ -68,6 +75,10 @@ async function singlePost(id, token, user) {
     postElement.innerHTML = postContent;
     post.addEvent(postElement, true);
     htmlMain.insertAdjacentElement("afterbegin", postElement);
+  } else {
+    alert = createAlert("singlePostAlert", "main", "afterbegin", "col-6");
+    changeTypeAndColor(alert, "alert", "danger");
+    displayResponse(alert, response.message, true);
   }
 }
 /**

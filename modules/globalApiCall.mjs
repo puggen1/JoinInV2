@@ -45,11 +45,7 @@ export default async function globalApiCall(
           return response.json();
         } else {
           let parsedError = await response.json();
-          if (parsedError.code === "P2002") {
-            throw new Error("email already used");
-          } else {
-            throw new Error(parsedError.message);
-          }
+          throw new Error(parsedError.errors[0].message);
         }
       }
     );

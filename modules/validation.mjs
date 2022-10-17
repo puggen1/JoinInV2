@@ -4,7 +4,7 @@ let emailRegex = /^[a-z0-9.æøå]{0,}[a-z0-9]{1,}@(stud.)?noroff.no$/i;
 let passwordRegex = /^[a-zA-Z0-9æøåÆØÅ]{8,30}$/;
 /**
  *
- * @param {htmlDOM} event an event with 3 input fields for name, email and password
+ * @param {object} event an event with 3 input fields for name, email and password
  * @returns array with booleans that represent  status of each input
  */
 export default async function validate(event) {
@@ -21,25 +21,14 @@ export default async function validate(event) {
   let passwordOk = false;
   if (usernameRegex.test(userName.value.trim())) {
     nameOk = true;
-    //hiddenToggler(userErrorPlacement, nameOk);
-    //changeColor(userName, nameOk);
   }
   if (passwordRegex.test(password.value.trim())) {
     passwordOk = true;
-    //hiddenToggler(passwordErrorPlacement, nameOk);
-    //changeColor(password, nameOk);
   }
   if (emailRegex.test(email.value.trim())) {
     emailOk = true;
-    //hiddenToggler(emailErrorPlacement, nameOk);
-    //changeColor(email, nameOk);
   }
-  /*
-  for(input of event.target){
-    if(input.tagName ==="INPUT"){
 
-    }
-  }*/
   //find a suiting for loop for this.. maybe add all to an array and then for each...
   hiddenToggler(userErrorPlacement, nameOk);
   changeColor(userName, nameOk);

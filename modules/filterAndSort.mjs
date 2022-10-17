@@ -25,7 +25,7 @@ function filterPosts(event, posts) {
  * @returns post if it has an image
  */
 function filterMedia(post) {
-  if (post.postData.media) {
+  if (post.media) {
     return true;
   }
 }
@@ -35,7 +35,7 @@ function filterMedia(post) {
  * @returns post if it is from today
  */
 function filterTodaysPosts(post) {
-  let postDate = post.postData.created;
+  let postDate = post.created;
   let formatedPostDate = new Date(postDate);
   let todaysDate = new Date();
   if (todaysDate.getDate() === formatedPostDate.getDate()) {
@@ -49,7 +49,7 @@ function filterTodaysPosts(post) {
  */
 function filterMyPosts(post) {
   let username = localStorage.getItem("username");
-  if (post.postData.author.name === username) {
+  if (post.author === username) {
     return true;
   }
 }
@@ -63,10 +63,9 @@ function sortPosts(event, posts) {
   let sortType = event.target.id;
   let sortedPosts = [];
   if (sortType === "new") {
-    console.log("should sort as newest first");
     sortedPosts = posts.sort((postA, postB) => {
-      let postAUpdate = new Date(postA.postData.updated);
-      let postBUpdate = new Date(postB.postData.updated);
+      let postAUpdate = new Date(postA.updated);
+      let postBUpdate = new Date(postB.updated);
       if (postAUpdate > postBUpdate) {
         return -1;
       } else if (postAUpdate < postBUpdate) {
@@ -76,10 +75,9 @@ function sortPosts(event, posts) {
       }
     });
   } else {
-    console.log("should be sorted as old first");
     sortedPosts = posts.sort((postA, postB) => {
-      let postAUpdate = new Date(postA.postData.updated);
-      let postBUpdate = new Date(postB.postData.updated);
+      let postAUpdate = new Date(postA.updated);
+      let postBUpdate = new Date(postB.updated);
       if (postAUpdate < postBUpdate) {
         return -1;
       } else if (postAUpdate > postBUpdate) {
@@ -106,17 +104,16 @@ function search(input, posts) {
  * @returns {boolean} if the title match this(input value)
  */
 function searchFilter(post) {
-  let {title = post.postData.title,author =post.postData.author.name, text = post.postData.body} = post
-  let string = this.toUpperCase()
+  let { title = post.title, author = post.author, text = post.body } = post;
+  let string = this.toUpperCase();
   if (title.toUpperCase().indexOf(string) > -1) {
     return true;
   }
-  if(author.toUpperCase().indexOf(string) > -1){
-    return true
+  if (author.toUpperCase().indexOf(string) > -1) {
+    return true;
   }
-  if(text.toUpperCase().indexOf(string) > -1){
-    return true
+  if (text.toUpperCase().indexOf(string) > -1) {
+    return true;
   }
-
 }
 export { filterPosts, sortPosts, search };

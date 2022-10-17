@@ -3,6 +3,32 @@
   display: none;
 }
 
+h1, .h1, h2, .h2, h3, .h3, #logo {
+  font-family: "Rubik", sans-serif;
+}
+
+p, a, input::placeholder, textarea::placeholder {
+  font-family: "Open Sans", sans-serif;
+}
+
+.postImage {
+  width: 100% !important;
+}
+
+/*inspiration from https://stackoverflow.com/questions/70662496/how-will-i-make-perfect-circle-image-using-card-in-bootstrap-5
+with some extra fixes since boostrap ratio makes things big..*/
+.profileImage {
+  position: relative;
+  --bs-aspect-ratio: 100%;
+  overflow: hidden;
+  width: 8.3333333% !important;
+}
+
+.profileImage img {
+  object-fit: cover;
+  object-position: center;
+}
+
 /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

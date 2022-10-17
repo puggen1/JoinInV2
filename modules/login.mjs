@@ -17,7 +17,7 @@ export default async function loginUser(event) {
     email: inputEmail.value,
     password: inputPassword.value,
   });
-  if (response.accessToken || !response.message) {
+  if (response.accessToken) {
     hiddenToggler(loginResponse);
     displayResponse(loginResponse, "");
     localStorage.setItem("token", response.accessToken);
@@ -27,6 +27,7 @@ export default async function loginUser(event) {
   } else {
     let loginResponse = document.querySelector("#loginResponse");
     hiddenToggler(loginResponse, false);
+    console.log(response.message);
     displayResponse(loginResponse, `<p class="m-auto">${response.message}</p>`);
   }
   //if response is ok redirect to profile or feed

@@ -1,6 +1,13 @@
 import Post from "./Post.mjs";
 import globalApiCall from "./globalApiCall.mjs";
 import { logOutInitiate, isLoggedIn, notLoggedIn } from "./logInOut.mjs";
+import {
+  hiddenToggler,
+  changeColor,
+  displayResponse,
+  changeTypeAndColor,
+  createAlert,
+} from "./responses.mjs";
 let params = new URLSearchParams(window.location.search);
 let token = localStorage.getItem("token");
 let isLoggedInStatus = localStorage.getItem("isLoggedIn");
@@ -24,15 +31,14 @@ async function singlePost(id, token, user) {
   );
   if (!response.message) {
     let post = new Post(response);
-    post.logPost();
-    let { title = postData.title, body = postData.body } = post.postData;
+    let { title = this.title, body = this.body } = post;
     document.title = title;
     let lowerPost = post.customButtons(user, true);
-    let media = Post.postPicture(post.postData);
-    let postProfile = Post.postProfile(post.postData);
+    let media = post.Picture();
+    let postProfile = post.Profile();
     let date = post.time();
-    console.log(date);
-    let postContent = `    
+    let postContent = `
+    <div class="card-body">    
     ${postProfile}
     <h1 class="text-center mb-4">${title}</h1>
     <div class="col-12 m-auto">
@@ -41,26 +47,38 @@ async function singlePost(id, token, user) {
     <p class="mt-2">${body}</p>
     </div>
     </div>
-    <div class="d-flex flex-wrap justify-content-between align-items-center mt-4">
-    <p class="my-0">${date[0]} ${date[1]} ${date[2]}</p>
+    </div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center card-footer">
+    <div class="d-flex col-12 col-sm-6 mb-2">
+    <a class="btn btn-primary" href="feed.html">Back</a>
+
     ${lowerPost}
+    </div>
+    <p class="my-0">${date[0]} ${date[1]} ${date[2]}</p>
     </div>
     `;
     //created post
     let postElement = document.createElement("div");
     postElement.classList.add(
       "col-12",
-      "col-lg-4",
+      "col-sm-10",
+      "col-md-8",
+      "col-xl-4",
       "mt-4",
       "bg-white",
       "rounded-2",
-      "p-3",
-      "mb-4"
+      "p-0",
+      "mb-4",
+
+      "card"
     );
-    postElement.innerHTML = `${postContent}<div class="d-flex mt-4 justify-content-center"><a class="btn btn-primary" href="feed.html">Back</a></div>`;
-    console.log(postElement);
+    postElement.innerHTML = postContent;
     post.addEvent(postElement, true);
     htmlMain.insertAdjacentElement("afterbegin", postElement);
+  } else {
+    alert = createAlert("singlePostAlert", "main", "afterbegin", "col-6");
+    changeTypeAndColor(alert, "alert", "danger");
+    displayResponse(alert, response.message, true);
   }
 }
 /**

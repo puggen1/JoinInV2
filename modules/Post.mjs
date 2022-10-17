@@ -5,7 +5,6 @@ import {
   createAlert,
   displayResponse,
 } from "./responses.mjs";
-//import { Modal } from "../node_modules/bootstrap/js/dist/modal.js";
 export default class Post {
   //targets everything here so i dont have to write postData.something every time
   constructor(postData) {
@@ -283,8 +282,6 @@ export default class Post {
     let date = current.getDate();
     let month = new Intl.DateTimeFormat("en-US", options).format(current);
     let fullDate = `${date} ${month}`;
-    //hmm
-    //or
 
     return [status, fullDate, time];
   }

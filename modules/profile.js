@@ -74,24 +74,23 @@ async function initiateProfile() {
       );
       postDiv.innerHTML = `
       <div class="card-body">
-      <h3 class="fs-5">${title}</h3>
+      <h3 class="fs-5"><b>${title}</b></h3>
         ${picture}
           <p class="card-text col-10 mt-2 fs-6">
           ${body}
              </p>
-
-          <div class="d-flex mt-3 justify-content-between flex-wrap ">
+          </div>
+          <div class="d-flex mt-3 justify-content-between flex-wrap card-footer ">
           ${buttons}
           <div class="d-flex justify-content-end ">
               <p class="m-2">${dates[0]} ${dates[1]}</p>
               <p class="m-2 ms-0">${dates[2]}</p>
           </div>
-      </div>
       </div>`;
       if (myself) {
         singlePost.addEvent(postDiv);
       }
-      middlePart.insertAdjacentElement("beforeend", postDiv);
+      posts.insertAdjacentElement("beforeend", postDiv);
     }
   }
 }

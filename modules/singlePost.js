@@ -32,7 +32,8 @@ async function singlePost(id, token, user) {
     let postProfile = Post.postProfile(post.postData);
     let date = post.time();
     console.log(date);
-    let postContent = `    
+    let postContent = `
+    <div class="card-body">    
     ${postProfile}
     <h1 class="text-center mb-4">${title}</h1>
     <div class="col-12 m-auto">
@@ -41,23 +42,27 @@ async function singlePost(id, token, user) {
     <p class="mt-2">${body}</p>
     </div>
     </div>
-    <div class="d-flex flex-wrap justify-content-between align-items-center mt-4">
+    </div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center card-footer">
     <p class="my-0">${date[0]} ${date[1]} ${date[2]}</p>
     ${lowerPost}
+    <div class="d-flex mt-4 justify-content-center col-12"><a class="btn btn-primary" href="feed.html">Back</a></div>
     </div>
     `;
     //created post
     let postElement = document.createElement("div");
     postElement.classList.add(
       "col-12",
-      "col-lg-4",
+      "col-md-8",
+      "col-xl-4",
       "mt-4",
       "bg-white",
       "rounded-2",
-      "p-3",
-      "mb-4"
+      "p-0",
+      "mb-4",
+      "card"
     );
-    postElement.innerHTML = `${postContent}<div class="d-flex mt-4 justify-content-center"><a class="btn btn-primary" href="feed.html">Back</a></div>`;
+    postElement.innerHTML = postContent;
     console.log(postElement);
     post.addEvent(postElement, true);
     htmlMain.insertAdjacentElement("afterbegin", postElement);

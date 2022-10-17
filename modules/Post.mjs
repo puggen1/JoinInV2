@@ -67,7 +67,7 @@ export default class Post {
                   ${profile}
                   <h3 class="">${title}</h3>
                   ${picture}
-                  <p class="card-text col-10">
+                  <p class="card-text col-10 mt-2">
                     ${body}
                   </p>
                 </div>

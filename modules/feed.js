@@ -14,11 +14,10 @@ let welcome = document.querySelector("#welcomeMessage");
 // just target input inside modal to send asa value....
 let imgLink = document.querySelector("#imgLink");
 
-
 //location for post form:
 let postForm = document.querySelector("#newPost");
 //location for filter
-let postFilter = document.querySelector("#filter")
+let postFilter = document.querySelector("#filter");
 //global list of all posts initiated
 let postArr = [];
 //global list for filtered posts that can be sorted
@@ -31,7 +30,7 @@ function feedInitiator() {
   if (status) {
     profileLink.innerHTML = userName;
     logOutInitiate(logOutBtn);
-    welcome.innerHTML = `Welcome <b>${userName}</b> here is whats new:`;
+    welcome.innerHTML = `Welcome <b class="fw-bold">${userName}</b> here is whats new:`;
     showFeed();
     postForm.addEventListener("submit", () => {
       Post.createPost(event, imgLink);

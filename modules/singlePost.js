@@ -27,8 +27,8 @@ async function singlePost(id, token, user) {
     let { title = this.title, body = this.body } = post;
     document.title = title;
     let lowerPost = post.customButtons(user, true);
-    let media = post.postPicture();
-    let postProfile = post.postProfile();
+    let media = post.Picture();
+    let postProfile = post.Profile();
     let date = post.time();
     let postContent = `
     <div class="card-body">    
@@ -42,15 +42,19 @@ async function singlePost(id, token, user) {
     </div>
     </div>
     <div class="d-flex flex-wrap justify-content-between align-items-center card-footer">
-    <p class="my-0">${date[0]} ${date[1]} ${date[2]}</p>
+    <div class="d-flex col-12 col-sm-6 mb-2">
+    <a class="btn btn-primary" href="feed.html">Back</a>
+
     ${lowerPost}
-    <div class="d-flex mt-4 justify-content-center col-12"><a class="btn btn-primary" href="feed.html">Back</a></div>
+    </div>
+    <p class="my-0">${date[0]} ${date[1]} ${date[2]}</p>
     </div>
     `;
     //created post
     let postElement = document.createElement("div");
     postElement.classList.add(
       "col-12",
+      "col-sm-10",
       "col-md-8",
       "col-xl-4",
       "mt-4",
@@ -58,6 +62,7 @@ async function singlePost(id, token, user) {
       "rounded-2",
       "p-0",
       "mb-4",
+
       "card"
     );
     postElement.innerHTML = postContent;

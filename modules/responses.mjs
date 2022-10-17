@@ -1,6 +1,6 @@
 /**
  *
- * @param {htmlDOM} htmlElement the element you want to toggle hidden on
+ * @param {object} htmlElement the element you want to toggle hidden on
  * @param {boolean} shouldBeHidden determines if the element should be hidden or not
  * @example ```js
  * hiddenTogler(htmlDiv, false)
@@ -29,7 +29,7 @@ let colorList = [
 ];
 /**
  *
- * @param {htmlDOM} htmlElement the element you want to change your border of
+ * @param {object} htmlElement the element you want to change your border of
  * @param {boolean} status determines if it should be green or red border
  */
 function changeColor(htmlElement, status = true) {
@@ -43,7 +43,7 @@ function changeColor(htmlElement, status = true) {
 }
 /**
  *
- * @param {htmlDOM} htmlElement the targeted element that needs to change color
+ * @param {object} htmlElement the targeted element that needs to change color
  * @param {string} type the place of dom that needs to be changed
  * @param {string} colorType color type that is wanted
  * @example ```js
@@ -61,7 +61,7 @@ function changeTypeAndColor(htmlElement, type, colorType = "") {
 }
 /**
  *
- * @param {htmlDOM} htmlElement the html element that you want yo add innerHTML to
+ * @param {object} htmlElement the html element that you want yo add innerHTML to
  * @param {string} message the message that should be added
  * @param {boolean} dismissable if the button for dismiss should be shown or not
  * @example ```js

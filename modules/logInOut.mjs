@@ -18,7 +18,7 @@ function isLoggedIn(authToken, isLoggedInStatus) {
 }
 /**
  *
- * @param {htmlDOM} logOutBtn the logout button  / log in button
+ * @param {object} logOutBtn the logout button  / log in button
  */
 function logOutInitiate(logOutBtn) {
   logOutBtn.addEventListener("click", logOut);
@@ -34,7 +34,7 @@ function logOut() {
 }
 /**
  *
- * @param {htmlDOM} profileLink a html object in header
+ * @param {object} profileLink a html object in header
  * @param {*} logOutBtn the logout / login Button
  * @param {*} alertLocation the target of the not logget in alert
  * @param {*} postForm the create post form if it excist

@@ -32,7 +32,9 @@ export default class Post {
    * @returns string with html of buttons
    */
   customButtons(localUsername, singlePage = false, profile = false) {
-    let buttons = `<div class="col-12 col-sm-6  col-lg-6 col-xl-8 col-xxl-6 d-flex">`;
+    //so singlepage looks good
+    let starterWidth = singlePage ? "col-8" : "col-12";
+    let buttons = `<div class="${starterWidth} col-sm-6  col-lg-6 col-xl-8 col-xxl-6 d-flex">`;
     if (!singlePage) {
       buttons += `<a type="button" href="./post.html?id=${this.id}" class="btn btn-primary col-3 col-md-6 col-lg-6 m-0 px-0">View </a>`;
     }
@@ -65,8 +67,8 @@ export default class Post {
   htmlPost() {
     let user = localStorage.getItem("username");
     let buttons = this.customButtons(user);
-    let picture = this.postPicture();
-    let profile = this.postProfile();
+    let picture = this.Picture();
+    let profile = this.Profile();
     let [status, date, time] = this.time();
     let html = `
     <div class="card shadow">
@@ -74,7 +76,7 @@ export default class Post {
                   ${profile}
                   <h3 class="">${this.title}</h3>
                   ${picture}
-                  <p class="card-text col-10 mt-2">
+                  <p class="card-text col-11 col-sm-10 mt-2">
                     ${this.body}
                   </p>
                 </div>
@@ -94,7 +96,7 @@ export default class Post {
    * @description checks a post object for an picture, and show it in post if so
    * @returns string variable with html
    */
-  postPicture() {
+  Picture() {
     let img = "";
     if (this.media) {
       img = `<img src="${this.media}" class="postImage img-fluid rounded-1" alt="test alt">`;
@@ -106,7 +108,7 @@ export default class Post {
    * @param {object} post a single post
    * @returns
    */
-  postProfile() {
+  Profile() {
     //make universal for friends function (move to another file and function )
     let img = "../assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg";
     if (this.avatar) {
@@ -129,10 +131,10 @@ export default class Post {
       field.value = oldVal[index];
     });
     updateform.addEventListener("submit", (event) => {
-      Post.updatePost(event, id, update);
+      Post.update(event, id, update);
     });
   }
-  static async updatePost(e, id, modal) {
+  static async update(e, id, modal) {
     e.preventDefault();
     let { title = e.target[0], body = e.target[1], media = e.target[2] } = e;
     let token = localStorage.getItem("token");
@@ -177,7 +179,7 @@ export default class Post {
   /**
    * @description takes id from an button, deletes the post with that id
    */
-  async deletePost(event, redirect) {
+  async delete(event, redirect) {
     let id = event.target.getAttribute("data-id");
     let token = localStorage.getItem("token");
     if (confirm("Delete this post?")) {
@@ -194,7 +196,7 @@ export default class Post {
   }
   /**
    * @description adds eventlisteners to the buttons of an post, so events will be triggered when clicked
-   * @param {htmlDOM} singlePost a html post, that the user created, with the update and delete buttons
+   * @param {object} singlePost a html post, that the user created, with the update and delete buttons
    *
    */
   addEvent(singlePost, redirect = false) {
@@ -215,15 +217,15 @@ export default class Post {
         this.showUpdatePostModal(e, oldValues);
       });
       postActions[1].addEventListener("click", (e) => {
-        this.deletePost(e, redirect);
+        this.delete(e, redirect);
       });
     }
   }
   /**
    * @description creates a post with the given data
-   * @param {htmlDom} event an html object with form data
+   * @param {object} event an html object with form data
    */
-  static async createPost(event, imageLink) {
+  static async create(event, imageLink) {
     event.preventDefault();
     let alert = createAlert("postMessage", "#newPost", "beforeend");
 
@@ -291,7 +293,7 @@ export default class Post {
    * @param {Object} post class instance of Post
    * @param {*} postDiv target div where content will be added to
    */
-  displayPosts(postDiv) {
+  display(postDiv) {
     let singlePost = document.createElement("div");
     singlePost.classList.add("container", "col-11", "col-xl-10", "my-4");
     singlePost.innerHTML = this.htmlPost();

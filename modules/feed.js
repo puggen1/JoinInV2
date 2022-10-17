@@ -3,7 +3,9 @@ import globalApiCall from "./globalApiCall.mjs";
 let allPosts = "social/posts?_author=true&_comments=true&_reactions=true";
 import { isLoggedIn, logOutInitiate, notLoggedIn } from "./logInOut.mjs";
 import { filterPosts, sortPosts, search } from "./filterAndSort.mjs";
-
+/**
+ * @description getting out all needed values
+ */
 let authToken = localStorage.getItem("token");
 let userName = localStorage.getItem("username");
 let isLoggedInStatus = localStorage.getItem("isLoggedIn");
@@ -18,6 +20,9 @@ let imgLink = document.querySelector("#imgLink");
 let postForm = document.querySelector("#newPost");
 //location for filter
 let postFilter = document.querySelector("#filter");
+let premadeButtons = document.querySelectorAll("#preMade button");
+let sortButtons = document.querySelectorAll("#sortOptions button");
+
 //global list of all posts initiated
 let postArr = [];
 //global list for filtered posts that can be sorted
@@ -36,13 +41,12 @@ function feedInitiator() {
     welcome.innerHTML = `Welcome <b class="fw-bold">${userName}</b> here is whats new:`;
     showFeed();
     postForm.addEventListener("submit", () => {
-      Post.createPost(event, imgLink);
+      Post.create(event, imgLink);
     });
   } else {
     notLoggedIn(profileLink, logOutBtn, "h1", postForm, postFilter);
   }
 }
-
 feedInitiator();
 /**
  * @description shows the feed
@@ -54,17 +58,16 @@ async function showFeed() {
     postArr.push(new Post(post));
   }
   for (let post of postArr) {
-    post.displayPosts(postDiv);
+    post.display(postDiv);
   }
 }
 
-let premadeButtons = document.querySelectorAll("#preMade button");
 premadeButtons.forEach((button) => {
   button.addEventListener("click", async (e) => {
     postToShow = await filterPosts(e, postArr);
     postDiv.innerHTML = "";
     for (let post of postToShow) {
-      post.displayPosts(postDiv);
+      post.display(postDiv);
     }
     //to reset filters:
     if (e.target.id === "all") {
@@ -73,7 +76,6 @@ premadeButtons.forEach((button) => {
     }
   });
 });
-let sortButtons = document.querySelectorAll("#sortOptions button");
 sortButtons.forEach((button) => {
   button.addEventListener("click", async (e) => {
     //if else statement is to "reset filters"
@@ -84,7 +86,7 @@ sortButtons.forEach((button) => {
     }
     postDiv.innerHTML = "";
     for (let post of postToShow) {
-      post.displayPosts(postDiv);
+      post.display(postDiv);
     }
   });
 });
@@ -99,6 +101,6 @@ searchField.addEventListener("keyup", async (e) => {
   let searchResult = await search(e.target.value, searchTarget);
   postDiv.innerHTML = "";
   for (let post of searchResult) {
-    post.displayPosts(postDiv);
+    post.display(postDiv);
   }
 });

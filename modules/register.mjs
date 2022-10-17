@@ -7,7 +7,7 @@ import {
 } from "./responses.mjs";
 /**
  * @description this function registers a user, and gives response on the html
- * @param {htmlDOM} event html form with 3 input for user, email and password
+ * @param {object} event html form with 3 input for user, email and password
  * @example```js
  * registerUser(form)
  *
@@ -52,5 +52,4 @@ export default async function registerUser(event) {
     );
     hiddenToggler(registerResponse, false);
   }
-  
 }

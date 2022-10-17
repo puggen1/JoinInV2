@@ -58,7 +58,7 @@ async function initiateProfile() {
     posts.innerHTML = "";
     for (let post of response.posts) {
       let singlePost = new Post(post);
-      let picture = singlePost.postPicture();
+      let picture = singlePost.Picture();
       let buttons = singlePost.customButtons(localUser, false, true);
       let {
         title = singlePost.postData.title,

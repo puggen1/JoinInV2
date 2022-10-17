@@ -24,6 +24,9 @@ let postArr = [];
 let postToShow = [];
 //create post areas here
 
+/**
+ * @description check if user is logged in, if true, initiate feed, else show not logged in message
+ */
 function feedInitiator() {
   //double validation for is logged in so token must be used as well
   let status = isLoggedIn(authToken, isLoggedInStatus);
@@ -39,7 +42,11 @@ function feedInitiator() {
     notLoggedIn(profileLink, logOutBtn, "h1", postForm, postFilter);
   }
 }
+
 feedInitiator();
+/**
+ * @description shows the feed
+ */
 async function showFeed() {
   let response = await globalApiCall(allPosts, authToken, "GET");
 
@@ -47,9 +54,8 @@ async function showFeed() {
     postArr.push(new Post(post));
   }
   for (let post of postArr) {
-    Post.displayPosts(post, postDiv);
+    post.displayPosts(postDiv);
   }
-  //postDiv.innerHTML = html;
 }
 
 let premadeButtons = document.querySelectorAll("#preMade button");
@@ -58,7 +64,7 @@ premadeButtons.forEach((button) => {
     postToShow = await filterPosts(e, postArr);
     postDiv.innerHTML = "";
     for (let post of postToShow) {
-      Post.displayPosts(post, postDiv);
+      post.displayPosts(postDiv);
     }
     //to reset filters:
     if (e.target.id === "all") {
@@ -78,7 +84,7 @@ sortButtons.forEach((button) => {
     }
     postDiv.innerHTML = "";
     for (let post of postToShow) {
-      Post.displayPosts(post, postDiv);
+      post.displayPosts(postDiv);
     }
   });
 });
@@ -93,6 +99,6 @@ searchField.addEventListener("keyup", async (e) => {
   let searchResult = await search(e.target.value, searchTarget);
   postDiv.innerHTML = "";
   for (let post of searchResult) {
-    Post.displayPosts(post, postDiv);
+    post.displayPosts(postDiv);
   }
 });

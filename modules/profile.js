@@ -26,6 +26,7 @@ newPost.addEventListener("submit", () => {
 });
 
 async function initiateProfile() {
+  profileLink.text = localUser;
   let url = "social/profiles/";
   let myself;
   //finds out if it is your own profile or not
@@ -57,7 +58,7 @@ async function initiateProfile() {
     posts.innerHTML = "";
     for (let post of response.posts) {
       let singlePost = new Post(post);
-      let picture = Post.postPicture(singlePost.postData);
+      let picture = singlePost.postPicture();
       let buttons = singlePost.customButtons(localUser, false, true);
       let {
         title = singlePost.postData.title,

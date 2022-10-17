@@ -24,12 +24,11 @@ async function singlePost(id, token, user) {
   );
   if (!response.message) {
     let post = new Post(response);
-    post.logPost();
-    let { title = postData.title, body = postData.body } = post.postData;
+    let { title = this.title, body = this.body } = post;
     document.title = title;
     let lowerPost = post.customButtons(user, true);
-    let media = Post.postPicture(post.postData);
-    let postProfile = Post.postProfile(post.postData);
+    let media = post.postPicture();
+    let postProfile = post.postProfile();
     let date = post.time();
     let postContent = `
     <div class="card-body">    

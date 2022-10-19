@@ -45,7 +45,7 @@ export default async function globalApiCall(
           return response.json();
         } else {
           let parsedError = await response.json();
-          console.log(parsedError);
+          //console.log(parsedError);
           throw new Error(
             parsedError.message
               ? parsedError.message

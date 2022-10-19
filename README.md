@@ -4,11 +4,17 @@ This is the course assignment for JS2. the Task is to implement javascript to ex
 
 ## content
 
-1.[Netlify Link](#netlify) 2.[design](#design) 3.[javascript](#javascript) 4.[Work plan](#work-plan) 5.[sources](#sources)
+1.[Netlify Link](#netlify) 2.[critical Error](#error) 3.[design](#design) 4.[javascript](#javascript) 5.[Work plan](#work-plan) 6.[sources](#sources)
 
 ## netlify
 
 https://joininv2-stablebuild.netlify.app/
+
+## error
+
+beacause of a reason i dont know about, the api changes the way it returns error messages, this really messed up my global api call, since it is responnsible of returning errors to many things.
+first i found out about it, i changed the code. but then the api changed again.
+that is why on 19.10.22 i added an fix to this. A ternary operator to check both way the api gives response.
 
 ## design
 

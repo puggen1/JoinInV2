@@ -45,7 +45,12 @@ export default async function globalApiCall(
           return response.json();
         } else {
           let parsedError = await response.json();
-          throw new Error(parsedError.errors[0].message);
+          console.log(parsedError);
+          throw new Error(
+            parsedError.message
+              ? parsedError.message
+              : parsedError.errors[0].message
+          );
         }
       }
     );

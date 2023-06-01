@@ -26,6 +26,11 @@ let newPost = document.querySelector("#newPost");
 let imgLink = document.querySelector("#imgLink");
 let profileLink = document.querySelector("#username");
 let logOutBtn = document.querySelector("#logOut");
+
+//update avatar
+let changeAvatar = document.querySelector("#changeAvatar");
+let inputAvatar = document.querySelector("#avatarLink");
+let responseMessage = document.querySelector("#response");
 newPost.addEventListener("submit", () => {
   Post.createPost(event, imgLink);
 });
@@ -51,6 +56,28 @@ async function initiateProfile() {
   } else {
     if (myself) {
       contactHeader.innerHTML = "my contacts";
+      inputAvatar.addEventListener("input", (e) => {
+        if (new URL(e.target.value)) {
+          modalImage.src = e.target.value;
+        }
+      });
+
+      changeAvatar.addEventListener("click", async () => {
+        const url = `social/profiles/${localUser}/media`;
+        let response = await globalApiCall(url, authToken, "PUT", {
+          avatar: inputAvatar.value,
+        });
+        if (response.avatar === inputAvatar.value) {
+          image.src = inputAvatar.value;
+          modalImage.src = inputAvatar.value;
+          modalText.innerHTML = `${localUser}'s profile picture`;
+          inputAvatar.value = "";
+          localStorage.setItem("avatar", response.avatar);
+          responseMessage.innerHTML = "avatar changed";
+        } else {
+          responseMessage.innerHTML = "something went wrong";
+        }
+      });
       //if not my profile:
     } else {
       middlePart.classList.add("order-3", "order-md-4", "order-xl-2");

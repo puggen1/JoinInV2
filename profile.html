@@ -52,6 +52,9 @@
                 <div class="ratio-1x1 ratio overflow-hidden rounded-circle ">
                 <img id="roundProfilePicture"class=" rounded-circle "src="./assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" data-bs-toggle="modal" data-bs-target="#profilePicture" alt="the users's profile picture">
               </div>
+              <div class="d-flex m-2">
+              <button id="updateAvatarButton" data-bs-toggle="modal" class="m-auto btn btn-primary" data-bs-target="#profilePicture">Update Avatar</button>
+                </div>
               </div>
             </div>
             
@@ -93,11 +96,14 @@
         </section>
         <div class="modal fade" id="profilePicture" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class=" modal-dialog modal-dialog-centered">
-              <div class="modal-content">
+              <div class="modal-content" style="min-height: 500px;">
                   <button type="button" class="btn-close ms-4 mt-4 py-2" data-bs-dismiss="modal"></button>
-                  <img class="rounded p-4"src="./assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" alt="the users's profile picture, an sample image">
+                  <img class="rounded p-4" style="max-height: 300px; object-fit: cover;" src="./assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" alt="the users's profile picture, an sample image">
                   <p  id="modalText"class=" text-center">Username's profile picture</p>
-                  
+                  <input type="url" id="avatarLink" class="form-control m-2 mx-auto w-75" placeholder="link here....">
+                  <button type="button" id="changeAvatar" class="btn btn-primary m-2 mx-auto  w-30">update</button>
+                  <p class="text-center" style="min-height: 24px;" id="response"></p>
+
             </div>
           </div>
           </div>

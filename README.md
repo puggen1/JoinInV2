@@ -12,6 +12,7 @@ Backend opperated by an API.
 
 ## Table of Contents
 
+- [Live version](#live-version)
 - [Description](#description)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
@@ -20,6 +21,12 @@ Backend opperated by an API.
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [improvements](#improvements)
+
+## Live version
+
+[Netlify](https://joininv2-stablebuild.netlify.app/)
+
+---
 
 ## Description
 
@@ -44,12 +51,19 @@ The website is set up to have authentication required to access the website. thi
 I have tried creating functions that are reusable, for example the globalApiCall can get and send data, making it easier to access the api.
 also the responses.mjs is multiple funcitions to create Bootstrap alerts, and inserting them into the DOM.
 
+The design is responsive for all devices, and ive tried to make it similar on all pages.
+The colors used are almost equal to the standard bootstrap colors, something that was an coincidence.
+
+---
+
 ## Built With
 
 I built the project using vanilla javascript, html and css. I also used the following libraries:
 
 - [Bootstrap](https://getbootstrap.com)
 - [sass](https://sass-lang.com/)
+
+---
 
 ## Getting Started
 
@@ -91,17 +105,23 @@ npm run live
 
 **Note** i would recommend using the vscode extension live server, as it will more easily work with sass.
 
+---
+
 ## Contributing
 
 If you want to contribute to the project, either by fixing bugs or adding features, feel free to do so.
 If you have found an bug, please create an issue, and i will try to fix it as soon as possible.
 You can open a pull request if you want to add features or fix bugs yourself.
 
+---
+
 ## Contact
 
 You can contact me on the following places:
 
 [LinkedIn](https://www.linkedin.com/in/bendik-kvam/)
+
+---
 
 ## improvements
 

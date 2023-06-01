@@ -14,6 +14,8 @@ Backend opperated by an API.
 
 - [Live version](#live-version)
 - [Description](#description)
+  - [Requirements for the assignment:](#here-are-the-requirements-for-the-assignment)
+  - [The website contains the following pages:](#the-website-contains-the-following-pages)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Installing](#installing)
@@ -32,7 +34,11 @@ Backend opperated by an API.
 
 This was a school project, aimed at showing what I have learned from this course. This assignment was an follow up from the one before, Here I would connect the Frontend i had designed to an API, And add other features to the site, including sort, filter and search functions.
 
-### Here are the requirements for the assignment:
+The main focus was to implement the javascript and api, but it was natural to improve and change some design elements aswell.
+
+---
+
+### Requirements for the assignment:
 
 - User with @noroff.no or @stud.noroff.no email can register profile
 - Registered user can login
@@ -53,6 +59,34 @@ also the responses.mjs is multiple funcitions to create Bootstrap alerts, and in
 
 The design is responsive for all devices, and ive tried to make it similar on all pages.
 The colors used are almost equal to the standard bootstrap colors, something that was an coincidence.
+
+---
+
+### The website contains the following pages:
+
+- Login/Register page
+  <br>
+  The index of the project, here you can login or register a new user.
+
+- Feed page
+  <br>
+  the feed contains all posts, and you can filter and search the posts. There is also a form to create a new post.
+
+- Profile page
+  <br>
+  On the profile page you can see your own posts, and update your avatar.
+
+- Post page
+  <br>
+  Here you can see a single post, and if it is your own post, you can update or delete it.
+
+- Settings page
+  <br>
+  placeholder page
+
+- terms page
+  <br>
+  placeholder page
 
 ---
 

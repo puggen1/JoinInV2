@@ -106,3 +106,5 @@ You can contact me on the following places:
 ## improvements
 
 I have made the following improvements to the project:
+
+- Added avatar button that opens the avatar modal, there you can add an avatar to your profile / update your avatar.

@@ -166,3 +166,5 @@ I have made the following improvements to the project:
 - Added avatar or placeholder avatar to header and profile
 
 - hidden change avatar when not own profile
+
+- fixed search - it bugged when things was null

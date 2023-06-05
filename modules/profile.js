@@ -25,11 +25,10 @@ let posts = document.querySelector("#posts");
 let allContent = document.querySelector("#allContent");
 let middlePart = document.querySelector("#allPosts");
 let newPost = document.querySelector("#newPost");
-let newButton = document.querySelector("#newButton");
 let imgLink = document.querySelector("#imgLink");
 let profileLink = document.querySelector("#username");
 let logOutBtn = document.querySelector("#logOut");
-
+let onlyOwn = document.querySelector("#onlyOwn");
 //update avatar
 let changeAvatar = document.querySelector("#changeAvatar");
 let inputAvatar = document.querySelector("#avatarLink");
@@ -87,7 +86,8 @@ async function initiateProfile() {
     middlePart.classList.add("order-3", "order-md-4", "order-xl-2");
     middlePart.classList.remove("order-4", "order-xl-5");
     newPost.remove();
-    newButton.remove();
+    updateAvatarButton.remove();
+    onlyOwn.remove();
     allContent.classList.add("align-items-start");
   }
   Profileheader.innerHTML = response.name;

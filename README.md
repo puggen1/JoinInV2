@@ -162,3 +162,7 @@ You can contact me on the following places:
 I have made the following improvements to the project:
 
 - Added avatar button that opens the avatar modal, there you can add an avatar to your profile / update your avatar.
+
+- Added avatar or placeholder avatar to header and profile
+
+- hidden change avatar when not own profile

@@ -91,8 +91,9 @@ async function initiateProfile() {
     allContent.classList.add("align-items-start");
   }
   Profileheader.innerHTML = response.name;
+  image.src = customAvatar(response.name);
   if (response.avatar) {
-    image.src = response.avatar;
+    image.src =  response.avatar;
     modalImage.src = response.avatar;
   }
   modalText.innerHTML = `${response.name}'s profile picture`;

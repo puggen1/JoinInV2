@@ -3,11 +3,13 @@ import globalApiCall from "./globalApiCall.mjs";
 let allPosts = "social/posts?_author=true&_comments=true&_reactions=true";
 import { isLoggedIn, logOutInitiate, notLoggedIn } from "./logInOut.mjs";
 import { filterPosts, sortPosts, search } from "./filterAndSort.mjs";
+import customAvatar from "./customAvatar.js";
 /**
  * @description getting out all needed values
  */
 let authToken = localStorage.getItem("token");
 let userName = localStorage.getItem("username");
+let avatar = localStorage.getItem("avatar");
 let isLoggedInStatus = localStorage.getItem("isLoggedIn");
 let logOutBtn = document.querySelector("#logOut");
 let profileLink = document.querySelector("#username");
@@ -36,7 +38,8 @@ function feedInitiator() {
   //double validation for is logged in so token must be used as well
   let status = isLoggedIn(authToken, isLoggedInStatus);
   if (status) {
-    profileLink.innerHTML = userName;
+    profileLink.children[0].innerHTML = userName;
+    profileLink.children[1].src = (avatar && avatar !== "null") ? avatar : customAvatar(userName);
     logOutInitiate(logOutBtn);
     welcome.innerHTML = `Welcome <b class="fw-bold">${userName}</b> here is whats new:`;
     showFeed();

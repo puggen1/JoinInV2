@@ -1,4 +1,5 @@
 import Post from "./Post.mjs";
+import customAvatar from "./customAvatar.js";
 import globalApiCall from "./globalApiCall.mjs";
 import { logOutInitiate, isLoggedIn, notLoggedIn } from "./logInOut.mjs";
 import {
@@ -12,6 +13,7 @@ let params = new URLSearchParams(window.location.search);
 let token = localStorage.getItem("token");
 let isLoggedInStatus = localStorage.getItem("isLoggedIn");
 let username = localStorage.getItem("username");
+let avatar = localStorage.getItem("avatar");
 let id = params.get("id");
 
 let htmlMain = document.querySelector("main");
@@ -88,7 +90,8 @@ function initiator() {
   let status = isLoggedIn(token, isLoggedInStatus);
   if (status) {
     singlePost(id, token, username);
-    HTMLusername.innerHTML = username;
+    HTMLusername.children[0].innerHTML = username;
+    HTMLusername.children[1].src = avatar && (avatar !== "null") ? avatar : customAvatar(username);
     logOutInitiate(logOutBtn);
   } else {
     notLoggedIn(HTMLusername, logOutBtn, "main");

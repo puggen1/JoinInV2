@@ -33,8 +33,9 @@ let onlyOwn = document.querySelector("#onlyOwn");
 let changeAvatar = document.querySelector("#changeAvatar");
 let inputAvatar = document.querySelector("#avatarLink");
 let responseMessage = document.querySelector("#response");
-newPost.addEventListener("submit", () => {
-  Post.createPost(event, imgLink);
+newPost.addEventListener("submit", (event) => {
+  event.preventDefault()
+  Post.create(event, imgLink);
 });
 
 async function initiateProfile() {

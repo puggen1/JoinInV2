@@ -1,7 +1,21 @@
 {
     "dependencies": {
-        "bootstrap": "^5.2.0",
+        "bootstrap": "^5.2.2",
         "bootstrap-icons": "^1.9.1",
         "node": "^16.17.0"
-    }
+  },
+  "name": "joininv2",
+  "description": "![The frontpage og joinIn](./assets/frontpage.PNG)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "sass": "sass --watch sass/custom.scss:css/style.css",
+    "start": "live-server",
+    "dev": "npm run sass & npm run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
+

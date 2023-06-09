@@ -105,14 +105,15 @@ function search(input, posts) {
  */
 function searchFilter(post) {
   let { title = post.title, author = post.author, text = post.body } = post;
+
   let string = this.toUpperCase();
-  if (title.toUpperCase().indexOf(string) > -1) {
+  if (title !== null && title.toUpperCase().indexOf(string) > -1) {
     return true;
   }
-  if (author.toUpperCase().indexOf(string) > -1) {
+  if (author !== null && author.toUpperCase().indexOf(string) > -1) {
     return true;
   }
-  if (text.toUpperCase().indexOf(string) > -1) {
+  if (text !== null && text.toUpperCase().indexOf(string) > -1) {
     return true;
   }
 }

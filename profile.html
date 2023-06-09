@@ -30,14 +30,17 @@
                         <a class=" navbar-brand display-2 text-center" href="#" data-bs-toggle="collapse" aria-expanded="false" aria-controls="newPost" data-bs-target="#newPost">Post +</a>
                       </div>
                       <div class="collapse navbar-collapse order-lg-1 col-lg-5 justify-content-md-center justify-content-lg-start" id="navbar">
-                        <ul class="navbar-nav col-md-6">
-                          <li class="nav-item col-md-4 col-xl-3">
-                            <a class="nav-link text-dark active" aria-current="page" id="username" href="profile.html">Profile</a>
+                        <ul class="navbar-nav col-md-6 col-lg-12">
+                          <li class="nav-item col-md-4 col-xl-3 col-xl-auto">
+                            <a class="nav-link text-dark d-flex align-items-center gap-1" aria-current="page" id="username" href="profile.html">
+                            <p class="m-0">Username Here</p>
+                            <img src="./assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" alt="profile picture" id="profilePicture" class="rounded-circle w-25 h-25">
+                            </a>
                           </li>
-                          <li class="nav-item col-md-auto ms-lg-3">
-                            <a id="logOut" class="nav-link text-dark" aria-current="page" href="index.html">(Log out)</a>
+                          <li class="nav-item col-md-auto ms-lg-3 col-lg-2 col-xl-auto d-flex align-items-center">
+                            <a class="nav-link text-dark px-lg-0 py-0 " aria-current="page" id="logOut" href="./feed.html">(Log out)</a>
                           </li>
-                       
+                        </ul>
                       </div>
                     </div>
                   </nav>
@@ -50,8 +53,11 @@
                 <div class="col-6 col-sm-4 col-md-3 col-xl-10 p-xl-4">
                   <h1 class="text-center mt-1 col-12 text-wrap text-break">username</h1>
                 <div class="ratio-1x1 ratio overflow-hidden rounded-circle ">
-                <img id="roundProfilePicture"class=" rounded-circle "src="./assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" data-bs-toggle="modal" data-bs-target="#profilePicture" alt="the users's profile picture">
+                <img id="roundProfilePicture"class=" rounded-circle "src="./assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" data-bs-toggle="modal" data-bs-target="#profilePictureModal" alt="the users's profile picture">
               </div>
+              <div class="d-flex m-2">
+              <button id="updateAvatarButton" data-bs-toggle="modal" class="m-auto btn btn-primary" data-bs-target="#profilePictureModal">Update Avatar</button>
+                </div>
               </div>
             </div>
             
@@ -91,13 +97,18 @@
           </div>
             
         </section>
-        <div class="modal fade" id="profilePicture" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="profilePictureModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class=" modal-dialog modal-dialog-centered">
-              <div class="modal-content">
+              <div class="modal-content" style="min-height: 500px;">
                   <button type="button" class="btn-close ms-4 mt-4 py-2" data-bs-dismiss="modal"></button>
-                  <img class="rounded p-4"src="./assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" alt="the users's profile picture, an sample image">
+                  <img class="rounded p-4" style="max-height: 300px; object-fit: cover;" src="./assets/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" alt="the users's profile picture, an sample image">
                   <p  id="modalText"class=" text-center">Username's profile picture</p>
-                  
+                  <div id="onlyOwn" class="d-flex flex-column justify-content-center align-items-center">
+                  <input type="url" id="avatarLink" class="form-control m-2 mx-auto w-75" placeholder="link here....">
+                  <button type="button" id="changeAvatar" class="btn btn-primary m-2 mx-auto  w-30">update</button>
+                  <p class="text-center" style="min-height: 24px;" id="response"></p>
+                </div>
+
             </div>
           </div>
           </div>

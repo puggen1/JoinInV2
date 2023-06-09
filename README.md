@@ -1,85 +1,170 @@
-# JoinInV2
+# Javascript 2 CA - JoinIn
 
-This is the course assignment for JS2. the Task is to implement javascript to excisting html and css
+![The frontpage og joinIn](./assets/frontpage.PNG)
 
-## content
+JoinIn - An social media platform, where you can post your thoughts and images, and see what others are up to.
 
-1.[Netlify Link](#netlify) 2.[critical Error](#error) 3.[design](#design) 4.[javascript](#javascript) 5.[Work plan](#work-plan) 6.[sources](#sources)
+Backend opperated by an API.
 
-## netlify
+## Status
 
-https://joininv2-stablebuild.netlify.app/
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1b74f3d1-91e4-4af5-b0b1-a8e33614781f/deploy-status)](https://app.netlify.com/sites/joininv2-feed/deploys)
 
-## error
+## Table of Contents
 
-beacause of a reason i dont know about, the api changes the way it returns error messages, this really messed up my global api call, since it is responnsible of returning errors to many things.
-first i found out about it, i changed the code. but then the api changed again.
-that is why on 19.10.22 i added an fix to this. A ternary operator to check both way the api gives response.
+- [Live version](#live-version)
+- [Description](#description)
+  - [Requirements for the assignment:](#here-are-the-requirements-for-the-assignment)
+  - [The website contains the following pages:](#the-website-contains-the-following-pages)
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Installing](#installing)
+  - [Running](#running)
+- [Contributing](#contributing)
+- [Contact](#contact)
+- [improvements](#improvements)
 
-## design
+## Live version
 
-the design uses bootstrap and some custom css.
-ive tried to make the design as similar on the diffrent pages. with some limitations
+[Netlify](https://joininv2-stablebuild.netlify.app/)
 
-## javascript
+---
 
-i have for the most tried to make dynamically js functions.
+## Description
 
-### Post class
+This was a school project, aimed at showing what I have learned from this course. This assignment was an follow up from the one before, Here I would connect the Frontend i had designed to an API, And add other features to the site, including sort, filter and search functions.
 
-most content related to posts, uses the class Post. this have multiple methods to display and create diffrent elements the posts need.
+The main focus was to implement the javascript and api, but it was natural to improve and change some design elements aswell.
 
-### globalApiCall
+---
 
-to get and send data to the api. I use the globalApiCall function. It works for most api methods.
+### Requirements for the assignment:
 
-### validation
+- User with @noroff.no or @stud.noroff.no email can register profile
+- Registered user can login
+- User can view a post content feed
+- User can filter the post content feed
+- User can search the post content feed
+- User can view a post content item by ID
+- User can create a post content item
+- User can update a post content item
+- User can delete a post content item
 
-i have used rexeg for validation. so i can limit the errors from the api, and only get errors like user already excist.
+I have used localstorage to Save user data and keep track of the JWT token, making user experience better.
+The website is set up to have authentication required to access the website. this means that you wont have access to anything on the api before regestering and logging in.
+**Note** you can be on the other pages, but you wont be able to see any content, only placeholders.
 
-```js
-usernameRegex = /^[a-zA-Z0-9_æøåÆØÅ]{3,15}$/;
-emailRegex = /^[a-z0-9.æøå]{0,}[a-z0-9]{1,}@(stud.)?noroff.no$/i;
-passwordRegex = /^[a-zA-Z0-9æøåÆØÅ]{8,30}$/;
+I have tried creating functions that are reusable, for example the globalApiCall can get and send data, making it easier to access the api.
+also the responses.mjs is multiple funcitions to create Bootstrap alerts, and inserting them into the DOM.
+
+The design is responsive for all devices, and ive tried to make it similar on all pages.
+The colors used are almost equal to the standard bootstrap colors, something that was an coincidence.
+
+---
+
+### The website contains the following pages:
+
+- Login/Register page
+  <br>
+  The index of the project, here you can login or register a new user.
+
+- Feed page
+  <br>
+  the feed contains all posts, and you can filter and search the posts. There is also a form to create a new post.
+
+- Profile page
+  <br>
+  On the profile page you can see your own posts, and update your avatar.
+
+- Post page
+  <br>
+  Here you can see a single post, and if it is your own post, you can update or delete it.
+
+- Settings page
+  <br>
+  placeholder page
+
+- terms page
+  <br>
+  placeholder page
+
+---
+
+## Built With
+
+I built the project using vanilla javascript, html and css. I also used the following libraries:
+
+- [Bootstrap](https://getbootstrap.com)
+- [sass](https://sass-lang.com/)
+
+---
+
+## Getting Started
+
+### Installing
+
+How to reproduce the project:
+
+1. Clone the repo:
+
+```bash
+git clone git@github.com:puggen1/JoinInV2.git
 ```
 
-### responses
+2. Install the dependencies:
 
-for both possitive and negative responses i have created several functions to display bootstrap alerts. these functions does muliple things:
+```
+npm install
+```
 
-- change color
-- placement
-- dismissable
+### Running
 
-### post and id
+To run the app, run the following commands:
 
-to update and delete posts, i use data-id to give the methods correct id, so i dont use html id multiple times.
-i also use bootstrap modals for update, so i had to look into bootstrap modal methods.
+start both sass and live server:
 
-### Reuse code
+```bash
+npm run dev
+```
 
-i have tried to reuse code as much as possible. i had a rough plan in my head in the start of how i would do this. in Post class, i used the same code for both feed and profile, but due to wanting it a little bit diffrent on single post, i had to write some of it again.
-other places where i planned to use it again, there where often some small complications, like location. i solved this by adding more parameters to the functions/methods, and changed small part of code inside based on for example booleans.
-example: Post customButtons. here it will do small changes based on if it is on singlepage, feed or profile.
+or start both sass and live server in different terminals:
 
-### improvments
+```bash
+npm run sass
+```
 
-late in the proccess i improved the Post class a bit, most importantly, i decleared all diffrent values i needed, instad of one(postData) that made me use postData.title, postData.author.name etc.
-i also changed all named from this.postCreate to this.create. so it looked a little better.
+```bash
+npm run live
+```
 
-## work plan
+**Note** i would recommend using the vscode extension live server, as it will more easily work with sass.
 
-this is my work plan
-https://github.com/users/puggen1/projects/1
+---
 
-there is all the diffrent tasks i have split the project into, and also some extra features i thought could be added if i had time later.
-due to my not entirely perfect planning i added some tasks later, when i found out i needed these things..
+## Contributing
 
-## sources
+If you want to contribute to the project, either by fixing bugs or adding features, feel free to do so.
+If you have found an bug, please create an issue, and i will try to fix it as soon as possible.
+You can open a pull request if you want to add features or fix bugs yourself.
 
-### profile images
+---
 
-to make all profile images dynamic and round i found an solution on:
-https://stackoverflow.com/questions/70662496/how-will-i-make-perfect-circle-image-using-card-in-bootstrap-5
+## Contact
 
-and added some extra things that makes it the correct size and work on diffrent places
+You can contact me on the following places:
+
+[LinkedIn](https://www.linkedin.com/in/bendik-kvam/)
+
+---
+
+## improvements
+
+I have made the following improvements to the project:
+
+- Added avatar button that opens the avatar modal, there you can add an avatar to your profile / update your avatar.
+
+- Added avatar or placeholder avatar to header and profile
+
+- hidden change avatar when not own profile
+
+- fixed search - it bugged when things was null
